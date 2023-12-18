@@ -1,0 +1,12 @@
+@import '$lib/styles/colors.css';
+
+body {
+    margin: 0;
+    /* background-color: var(--cp-mocha-base); */
+    background-image: url("https://i.pinimg.com/originals/d8/64/0a/d8640a81a481e6b1d4813e6d94507085.png");
+    color: var(--cp-mocha-text);
+}
+
+a {
+    color: var(--cp-mocha-text)
+}

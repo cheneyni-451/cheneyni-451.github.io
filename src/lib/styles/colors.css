@@ -1,0 +1,25 @@
+:root {
+    --cp-mocha-rosewater: #F5E0DC;
+    --cp-mocha-flamingo: #F2CDCD;
+    --cp-mocha-pink: #F5C2E7;
+    --cp-mocha-mauve: #CBA6F7;
+    --cp-mocha-red: #F38BA8;
+    --cp-mocha-maroon: #EBA0AC;
+    --cp-mocha-peach: #FAB387;
+    --cp-mocha-yellow: #F9E2AF;
+    --cp-mocha-green: #A6E3A1;
+    --cp-mocha-teal: #94E2D5;
+    --cp-mocha-sky: #89DCEB;
+    --cp-mocha-sapphire: #74C7EC;
+    --cp-mocha-blue: #89B4FA;
+    --cp-mocha-lavender: #B4BEFE;
+    --cp-mocha-text: #CDD6FA;
+    --cp-mocha-subtext1: #BAC2DE;
+    --cp-mocha-subtext0: #A6ADC8;
+    --cp-mocha-surface2: #585B70;
+    --cp-mocha-surface1: #45475A;
+    --cp-mocha-surface0: #313244;
+    --cp-mocha-base: #1E1E2E;
+    --cp-mocha-mantle: #181825;
+    --cp-mocha-crust: #11111B;
+}

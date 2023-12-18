@@ -1,17 +1,28 @@
-<nav>
-	<div class="nav-left">
-		<ul>
-			<li><a href="/">Home</a></li>
-			<li><a href="/projects">Projects</a></li>
-			<li><a href="/resume">Resume</a></li>
-		</ul>
-	</div>
-	<div class="nav-right">
-		<ul>
-			<li><a href="https://github.com/cheneyni-451" target="_blank">GitHub</a></li>
-			<li><a href="https://www.linkedin.com/in/cheneyni" target="_blank">LinkedIn</a></li>
-		</ul>
-	</div>
-</nav>
+<script>
+	import NavBar from '$lib/components/NavBar.svelte';
+	import { flyblur } from '$lib/transitions';
 
-<slot />
+	export let data;
+	let navBarTransitioned = false;
+</script>
+
+<NavBar bind:navBarTransitioned />
+
+{#if navBarTransitioned}
+	{#key data.pathname}
+		<div
+			id="main"
+			in:flyblur|global={{ duration: 600, y: 100 }}
+			out:flyblur|global={{ duration: 300, y: 100 }}
+		>
+			<slot />
+		</div>
+	{/key}
+{/if}
+
+<style>
+	#main {
+		position: absolute;
+		margin: 3em;
+	}
+</style>
