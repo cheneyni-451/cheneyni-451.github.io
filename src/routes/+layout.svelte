@@ -23,6 +23,10 @@
 <style>
 	#main {
 		position: absolute;
+		width: 50%;
+		max-width: 900px;
+		left: 50%;
+		transform: translateX(-50%);
 		margin: 3em;
 	}
 </style>
