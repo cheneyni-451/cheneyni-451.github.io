@@ -1,5 +1,5 @@
 <script>
-	import ResumeItem from '$lib/components/ResumeItem.svelte';
+	import ResumeItem from './ResumeItem.svelte';
 
 	export let resumeData;
 </script>

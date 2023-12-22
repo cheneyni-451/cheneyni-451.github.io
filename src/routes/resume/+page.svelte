@@ -1,5 +1,5 @@
 <script>
-	import ResumeList from '$lib/components/ResumeList.svelte';
+	import ResumeList from '../../components/ResumeList.svelte';
 	export let data;
 </script>
 

@@ -1,14 +1,14 @@
 <script>
-	import NavBar from '$lib/components/NavBar.svelte';
+	import NavBar from '../components/NavBar.svelte';
 	import { flyblur } from '$lib/transitions';
+	import { navBarTransitioned } from '../stores';
 
 	export let data;
-	let navBarTransitioned = false;
 </script>
 
-<NavBar bind:navBarTransitioned />
+<NavBar />
 
-{#if navBarTransitioned}
+{#if $navBarTransitioned}
 	{#key data.pathname}
 		<div
 			id="main"
@@ -21,6 +21,8 @@
 {/if}
 
 <style>
+	@import '$lib/styles/main.css';
+
 	#main {
 		position: absolute;
 		width: 50%;

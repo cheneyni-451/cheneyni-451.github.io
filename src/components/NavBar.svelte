@@ -6,6 +6,8 @@
 	import { slide } from 'svelte/transition';
 	import { tweened } from 'svelte/motion';
 	import { expoOut } from 'svelte/easing';
+	import ThemeToggle from './ThemeToggle.svelte';
+	import { navBarTransitioned } from '../stores';
 
 	let ready = false;
 	onMount(() => (ready = true));
@@ -31,7 +33,8 @@
 	let navDivTransitioned = false;
 	let navLeftTransitioned = false;
 	let navRightTransitioned = false;
-	export let navBarTransitioned = false;
+
+	$: $navBarTransitioned = navDivTransitioned && navLeftTransitioned && navRightTransitioned;
 </script>
 
 {#if ready}
@@ -40,7 +43,6 @@
 		in:flyblur={{ duration: 1000, y: -100 }}
 		on:introend={() => {
 			navDivTransitioned = true;
-			navBarTransitioned = navDivTransitioned && navLeftTransitioned && navRightTransitioned;
 		}}
 	>
 		<ul class="navbar-left">
@@ -50,8 +52,6 @@
 					on:introend={() => {
 						if (i === linksLeft.length - 1) {
 							navLeftTransitioned = true;
-							navBarTransitioned =
-								navDivTransitioned && navLeftTransitioned && navRightTransitioned;
 						}
 					}}
 				>
@@ -69,8 +69,6 @@
 					on:introend={() => {
 						if (i === linksRight.length - 1) {
 							navRightTransitioned = true;
-							navBarTransitioned =
-								navDivTransitioned && navLeftTransitioned && navRightTransitioned;
 						}
 					}}
 				>
@@ -83,21 +81,20 @@
 					>
 				</li>
 			{/each}
+
+			<ThemeToggle />
 		</ul>
 	</nav>
 {/if}
 
 <style>
-	@import '$lib/styles/colors.css';
-	@import '$lib/styles/main.css';
-
 	.navbar {
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
 		padding-left: 3em;
 		padding-right: 3em;
-		background-color: color-mix(in srgb, var(--cp-mocha-crust) 80%, transparent);
+		background-color: color-mix(in srgb, var(--cp-crust) 80%, transparent);
 		backdrop-filter: blur(10px);
 	}
 
@@ -105,7 +102,7 @@
 	.navbar-right {
 		display: flex;
 		flex-direction: row;
-		align-items: baseline;
+		align-items: center;
 		list-style-type: none;
 		gap: 2em;
 		padding: 0;
@@ -125,7 +122,7 @@
 		height: 2px;
 		bottom: 0;
 		left: 0;
-		background-color: var(--cp-mocha-sky);
+		background-color: var(--cp-sky);
 		transform: scaleX(0);
 		transition: transform 0.3s ease;
 	}
@@ -135,11 +132,11 @@
 	}
 
 	.social-links {
-		fill: var(--cp-mocha-text);
+		fill: var(--cp-text);
 	}
 
 	.social-links:hover {
-		fill: var(--cp-mocha-sky);
+		fill: var(--cp-sky);
 	}
 
 	.navbar-left li:first-child {
