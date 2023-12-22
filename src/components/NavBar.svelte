@@ -7,7 +7,7 @@
 	import { tweened } from 'svelte/motion';
 	import { expoOut } from 'svelte/easing';
 	import ThemeToggle from './ThemeToggle.svelte';
-	import { navBarTransitioned } from '../stores';
+	import { navBarTransitioned } from '$lib/stores';
 
 	let ready = false;
 	onMount(() => (ready = true));

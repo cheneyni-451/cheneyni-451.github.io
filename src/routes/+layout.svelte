@@ -1,7 +1,7 @@
 <script>
 	import NavBar from '../components/NavBar.svelte';
 	import { flyblur } from '$lib/transitions';
-	import { navBarTransitioned } from '../stores';
+	import { navBarTransitioned } from '$lib/stores';
 
 	export let data;
 </script>
@@ -12,7 +12,7 @@
 	{#key data.pathname}
 		<div
 			id="main"
-			in:flyblur|global={{ duration: 600, y: 100 }}
+			in:flyblur|global={{ delay: 200, duration: 600, y: 100 }}
 			out:flyblur|global={{ duration: 300, y: 100 }}
 		>
 			<slot />
