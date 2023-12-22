@@ -63,7 +63,7 @@
 			{#each linksRight as { url, iconComponent, scale }, i}
 				<li
 					in:slide|global={{
-						delay: (linksRight.length - 1 - i) * 400 + 400,
+						delay: (linksRight.length - i) * 200 + 400,
 						duration: 200
 					}}
 					on:introend={() => {
@@ -82,7 +82,7 @@
 				</li>
 			{/each}
 
-			<ThemeToggle />
+			<li in:slide|global={{ duration: 200 }}><ThemeToggle /></li>
 		</ul>
 	</nav>
 {/if}
@@ -111,6 +111,9 @@
 	.site-links,
 	.social-links {
 		text-decoration: none;
+	}
+
+	.site-links {
 		position: relative;
 	}
 
@@ -133,6 +136,7 @@
 
 	.social-links {
 		fill: var(--cp-text);
+		transition: fill 0.5s ease-out;
 	}
 
 	.social-links:hover {

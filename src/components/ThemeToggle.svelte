@@ -31,8 +31,10 @@
 
 <style>
 	.theme-toggle {
+		display: block;
 		border: none;
 		padding: 0;
 		background-color: transparent;
+		transition: fill 0.5s ease-out;
 	}
 </style>
