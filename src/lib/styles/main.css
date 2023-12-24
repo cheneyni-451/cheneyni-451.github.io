@@ -4,12 +4,10 @@ body {
 	margin: 0;
 	background-color: var(--cp-base);
 	color: var(--cp-text);
-	transition: background-color 1s ease-out;
-	transition: color 1s ease-out;
-}
-
-a {
-	color: var(--cp-text);
+	transition:
+		background-color 1s ease,
+		color 1s ease;
+	font-family: 'Chakra Petch', sans-serif;
 }
 
 blockquote,

@@ -55,7 +55,7 @@
 						}
 					}}
 				>
-					<a class="site-links" href={url}>{text}</a>
+					<a class="left-buttons" href={url}>{text}</a>
 				</li>
 			{/each}
 		</ul>
@@ -73,16 +73,16 @@
 					}}
 				>
 					<a
-						on:pointerenter={() => scale.set(1.6)}
+						on:pointerenter={() => scale.set(1.25)}
 						on:pointerleave={() => scale.set(1)}
-						class="social-links"
+						class="right-buttons"
 						href={url}
 						target="_blank"><svelte:component this={iconComponent} {scale} /></a
 					>
 				</li>
 			{/each}
 
-			<li in:slide|global={{ duration: 200 }}><ThemeToggle /></li>
+			<li class="right-buttons" in:slide|global={{ duration: 200 }}><ThemeToggle /></li>
 		</ul>
 	</nav>
 {/if}
@@ -96,6 +96,7 @@
 		padding-right: 3em;
 		background-color: color-mix(in srgb, var(--cp-crust) 80%, transparent);
 		backdrop-filter: blur(10px);
+		transition: background-color 1s ease;
 	}
 
 	.navbar-left,
@@ -108,16 +109,19 @@
 		padding: 0;
 	}
 
-	.site-links,
-	.social-links {
+	.left-buttons,
+	.right-buttons {
 		text-decoration: none;
 	}
 
-	.site-links {
+	.left-buttons {
 		position: relative;
+		font-size: 18px;
+		font-weight: bold;
+		color: inherit;
 	}
 
-	.site-links::before {
+	.left-buttons::before {
 		content: '';
 		position: absolute;
 		display: block;
@@ -130,21 +134,22 @@
 		transition: transform 0.3s ease;
 	}
 
-	.site-links:hover::before {
+	.left-buttons:hover::before {
 		transform: scaleX(1);
 	}
 
-	.social-links {
+	.right-buttons {
 		fill: var(--cp-text);
+		opacity: 0.8;
 		transition: fill 0.5s ease-out;
 	}
 
-	.social-links:hover {
-		fill: var(--cp-sky);
+	.right-buttons:hover {
+		opacity: 1;
 	}
 
-	.navbar-left li:first-child {
-		font-size: larger;
+	.navbar-left li:first-child a {
+		font-size: 24px;
 		font-weight: bold;
 	}
 </style>

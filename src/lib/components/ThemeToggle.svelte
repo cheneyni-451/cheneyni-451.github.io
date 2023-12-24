@@ -36,5 +36,6 @@
 		padding: 0;
 		background-color: transparent;
 		transition: fill 0.5s ease-out;
+		cursor: pointer;
 	}
 </style>
