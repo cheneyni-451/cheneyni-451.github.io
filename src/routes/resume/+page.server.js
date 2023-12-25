@@ -1,4 +1,4 @@
-import { resumeItems } from './resumeData';
+import { resumeItems } from '$lib/data/resumeData';
 
 export function load() {
 	return {
