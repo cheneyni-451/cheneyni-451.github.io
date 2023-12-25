@@ -30,3 +30,8 @@ pre {
 	font: inherit;
 	vertical-align: baseline;
 }
+
+::-moz-selection,
+::selection {
+	background-color: color-mix(in srgb, var(--cp-surface2) 50%, transparent);
+}
