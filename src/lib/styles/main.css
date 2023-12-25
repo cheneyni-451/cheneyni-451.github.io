@@ -10,6 +10,11 @@ body {
 	font-family: 'Chakra Petch', sans-serif;
 }
 
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
 blockquote,
 dd,
 dl,

@@ -109,16 +109,10 @@
 		padding: 0;
 	}
 
-	.left-buttons,
-	.right-buttons {
-		text-decoration: none;
-	}
-
 	.left-buttons {
 		position: relative;
 		font-size: 18px;
 		font-weight: bold;
-		color: inherit;
 	}
 
 	.left-buttons::before {
