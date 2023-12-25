@@ -11,6 +11,10 @@
 	const errorMessage = errorMessages[errorCode];
 </script>
 
+<svelte:head>
+	<title>{errorCode} | {errorMessage}</title>
+</svelte:head>
+
 <h1 class="error-code">{errorCode}</h1>
 {#if errorMessage !== undefined}
 	<p class="error-message">{errorMessage}</p>

@@ -9,14 +9,12 @@
 	import ThemeToggle from './ThemeToggle.svelte';
 	import { navBarTransitioned } from '$lib/stores';
 
+	export let navLinks;
+
 	let ready = false;
 	onMount(() => (ready = true));
 
-	const linksLeft = [
-		{ text: 'Cheney Ni', url: '/' },
-		{ text: 'Projects', url: '/projects' },
-		{ text: 'Resume', url: '/resume' }
-	];
+	const linksLeft = navLinks;
 	const linksRight = [
 		{
 			iconComponent: GitHubIcon,
