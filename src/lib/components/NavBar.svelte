@@ -10,6 +10,7 @@
 	import { navBarTransitioned } from '$lib/stores';
 
 	export let navLinks;
+	export let pathname;
 
 	let ready = false;
 	onMount(() => (ready = true));
@@ -53,7 +54,9 @@
 						}
 					}}
 				>
-					<a class="left-buttons" href={url}>{text}</a>
+					<a class="left-buttons {url !== '/' && pathname === url ? 'current-page' : ''}" href={url}
+						>{text}</a
+					>
 				</li>
 			{/each}
 		</ul>
@@ -118,12 +121,14 @@
 		position: absolute;
 		display: block;
 		width: 100%;
-		height: 2px;
-		bottom: 0;
+		height: 0.1em;
+		bottom: -1px;
 		left: 0;
 		background-color: var(--cp-sky);
 		transform: scaleX(0);
-		transition: transform 0.3s ease;
+		transition:
+			transform 0.3s ease,
+			background-color 0.3s ease;
 	}
 
 	.left-buttons:hover::before {
@@ -143,5 +148,10 @@
 	.navbar-left li:first-child a {
 		font-size: 24px;
 		font-weight: bold;
+	}
+
+	.current-page::before {
+		transform: scaleX(1);
+		background-color: var(--cp-blue);
 	}
 </style>

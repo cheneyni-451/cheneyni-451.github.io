@@ -12,7 +12,7 @@
 	<title>{title}</title>
 </svelte:head>
 
-<NavBar {navLinks} />
+<NavBar {navLinks} {pathname} />
 
 {#if $navBarTransitioned}
 	{#key pathname}
