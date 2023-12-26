@@ -1,29 +1,3 @@
-:root {
-	--cp-rosewater: #f5e0dc;
-	--cp-flamingo: #f2cdcd;
-	--cp-pink: #f5c2e7;
-	--cp-mauve: #cba6f7;
-	--cp-red: #f38ba8;
-	--cp-maroon: #eba0ac;
-	--cp-peach: #fab387;
-	--cp-yellow: #f9e2af;
-	--cp-green: #a6e3a1;
-	--cp-teal: #94e2d5;
-	--cp-sky: #89dceb;
-	--cp-sapphire: #74c7ec;
-	--cp-blue: #89b4fa;
-	--cp-lavender: #b4befe;
-	--cp-text: #cdd6fa;
-	--cp-subtext1: #bac2de;
-	--cp-subtext0: #a6adc8;
-	--cp-surface2: #585b70;
-	--cp-surface1: #45475a;
-	--cp-surface0: #313244;
-	--cp-base: #1e1e2e;
-	--cp-mantle: #181825;
-	--cp-crust: #11111b;
-}
-
 html[data-theme='light'] {
 	--cp-rosewater: #dc9a78;
 	--cp-flamingo: #dd7878;
@@ -42,6 +16,9 @@ html[data-theme='light'] {
 	--cp-text: #4c4f69;
 	--cp-subtext1: #5c5f77;
 	--cp-subtext0: #6c6f85;
+	--cp-overlay2: #7c7f93;
+	--cp-overlay1: #8c8fa1;
+	--cp-overlay0: #9ca0b0;
 	--cp-surface2: #acb0be;
 	--cp-surface1: #bcc0cc;
 	--cp-surface0: #ccd0da;
@@ -68,6 +45,9 @@ html[data-theme='dark'] {
 	--cp-text: #cdd6fa;
 	--cp-subtext1: #bac2de;
 	--cp-subtext0: #a6adc8;
+	--cp-overlay2: #9399b2;
+	--cp-overlay1: #7f849c;
+	--cp-overlay0: #6c7086;
 	--cp-surface2: #585b70;
 	--cp-surface1: #45475a;
 	--cp-surface0: #313244;
