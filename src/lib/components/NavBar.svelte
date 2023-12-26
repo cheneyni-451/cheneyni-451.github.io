@@ -90,6 +90,7 @@
 
 <style>
 	.navbar {
+		height: 4em;
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
