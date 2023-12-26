@@ -32,7 +32,7 @@
 	#main {
 		position: absolute;
 		width: 50%;
-		max-width: 900px;
+		max-width: 60em;
 		left: 50%;
 		transform: translateX(-50%);
 		margin-top: 3em;

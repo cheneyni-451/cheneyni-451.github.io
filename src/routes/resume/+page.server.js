@@ -4,7 +4,7 @@ export function load() {
 	return {
 		resumeItems: resumeItems
 			.sort((a, b) => b.date[0].getTime() - a.date[0].getTime())
-			.map(({ date, company, title, description }) => {
+			.map(({ date, company, title, description, tags }) => {
 				const dateTimeFormat = new Intl.DateTimeFormat('en-US', {
 					month: 'short',
 					year: 'numeric'
@@ -16,7 +16,7 @@ export function load() {
 
 				const titleString = `${title} · ${company}`;
 
-				return { date: dateString, title: titleString, description };
+				return { date: dateString, title: titleString, description, tags };
 			})
 	};
 }
