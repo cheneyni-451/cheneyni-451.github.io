@@ -20,3 +20,7 @@ a {
 ::selection {
 	background-color: color-mix(in srgb, var(--cp-surface2) 50%, transparent);
 }
+
+b {
+	font-weight: bold;
+}

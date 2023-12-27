@@ -1,43 +1,63 @@
-<h1>Hello! I'm Cheney</h1>
+<article class="section-container">
+	<section class="introduction">
+		<h1 class="hello">Hello! I'm Cheney</h1>
+		<h2 class="title">Software Developer</h2>
+	</section>
 
-<p>
-	Dis venenatis euismod leo ad aliquam libero commodo interdum rutrum quis. Malesuada curae;
-	venenatis odio cum. Luctus mauris gravida dignissim hendrerit consequat ut dolor posuere sapien
-	accumsan himenaeos dictumst. Erat mollis, dictum aliquam est dolor. Odio dapibus class sapien
-	etiam vivamus eleifend arcu. Arcu massa potenti nunc habitant inceptos? Tempor porttitor elit
-	lacinia sagittis.
-</p>
-<p>
-	Morbi nisl senectus, senectus eros? Magnis lorem posuere nunc adipiscing augue est mollis morbi
-	turpis dis vehicula. Ultricies varius dictumst volutpat proin adipiscing nunc cum cubilia aliquam.
-	Rhoncus sed eleifend suspendisse commodo torquent facilisis faucibus montes natoque diam mollis
-	ridiculus. Ligula nibh ad molestie neque nostra. Quisque magna adipiscing consequat hac natoque
-	consequat gravida cubilia sit ac. Porta nunc molestie fusce ultrices per luctus purus. Elementum
-	diam nulla cum est hac. Sagittis erat ut etiam aliquam platea hac condimentum lobortis luctus
-	neque. Primis dignissim euismod venenatis. Cras adipiscing cum sollicitudin dapibus.
-</p>
-<p>
-	Arcu fermentum nibh quisque id consequat leo commodo! Mollis mattis magnis, est aenean. Bibendum
-	sagittis gravida quisque sociis non laoreet. Class risus curabitur sodales! At neque rhoncus
-	hendrerit, ultricies urna! Magna, consequat dis elit. Commodo ullamcorper per varius penatibus
-	euismod porttitor habitasse non potenti! Curae; nec ante proin erat cursus sodales lacinia
-	habitant. Cum condimentum suscipit suscipit blandit? Sociosqu, vehicula curae; morbi! Nibh montes
-	suspendisse risus. Ultrices faucibus ultrices rutrum. Massa ornare sed ultricies ridiculus!
-	Volutpat fusce et malesuada proin eros. Integer torquent lorem nibh?
-</p>
-<p>
-	Pellentesque mollis neque purus litora iaculis luctus eu montes non natoque nibh. Lacus porttitor
-	feugiat turpis faucibus lacus inceptos! Leo class condimentum faucibus justo diam. Natoque
-	sollicitudin sit congue consectetur ullamcorper integer gravida libero. Senectus est commodo hac
-	enim nibh interdum quis. Magnis cras nascetur pulvinar leo cras, varius cum blandit dignissim
-	scelerisque ornare volutpat. Per curae; hac dui montes morbi donec nisi fringilla pretium pretium
-	dapibus blandit.
-</p>
-<p>
-	Vestibulum tortor ullamcorper ipsum suscipit, tellus curae; quis nascetur. Lacinia mus sed rutrum
-	convallis posuere ullamcorper tincidunt. Sodales sapien aptent vestibulum pulvinar aliquam? Leo;
-	sodales dis lacus! Cubilia rutrum aptent faucibus sollicitudin praesent cubilia. Cras, nibh
-	consectetur nec. Imperdiet dis nam cum porttitor cursus cras orci cum tortor suspendisse ultricies
-	consequat. Penatibus litora erat vehicula sem a luctus leo dui aenean posuere ornare. Rhoncus eget
-	orci hac ullamcorper dignissim dignissim conubia sapien.
-</p>
+	<section class="bio">
+		<p class="paragraph">
+			I graduated from the <a href="https://eecs.engin.umich.edu/" target="_blank"
+				>University of Michigan</a
+			>
+			at the end of 2022, completing two summer internships at
+			<a href="https://www.redroverk12.com/" target="_blank">Red Rover</a>
+			and
+			<a href="https://aws.amazon.com/" target="_blank">AWS</a>. After graduating, I worked at
+			<b>AWS</b> on the same team I was on during my internship for a few months before being caught
+			in a wave of layoffs.
+		</p>
+		<p class="paragraph"></p>
+	</section>
+</article>
+
+<style>
+	a {
+		font-weight: bold;
+	}
+
+	.section-container {
+		display: flex;
+		flex-direction: column;
+		gap: 20em;
+	}
+	.introduction {
+		height: 100vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 1.5em;
+	}
+
+	.hello {
+		font-size: 4em;
+	}
+
+	.title {
+		font-size: 1.1em;
+		color: var(--cp-subtext0);
+	}
+
+	.bio {
+		height: 50vh;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.paragraph {
+		margin-bottom: 1.5em;
+		max-width: 35em;
+		line-height: 1.5em;
+	}
+</style>

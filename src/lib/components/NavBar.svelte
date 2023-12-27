@@ -99,6 +99,11 @@
 		background-color: color-mix(in srgb, var(--cp-crust) 80%, transparent);
 		backdrop-filter: blur(10px);
 		transition: background-color 1s ease;
+		position: fixed;
+		top: 0;
+		width: 100%;
+		box-sizing: border-box;
+		z-index: 10000;
 	}
 
 	.navbar-left,

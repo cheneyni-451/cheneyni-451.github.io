@@ -31,10 +31,6 @@
 
 	#main {
 		position: absolute;
-		width: 50%;
-		max-width: 60em;
-		left: 50%;
-		transform: translateX(-50%);
-		margin-top: 3em;
+		width: 100%;
 	}
 </style>
