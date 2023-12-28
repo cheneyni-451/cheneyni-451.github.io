@@ -8,6 +8,7 @@
 	height="24"
 	width="24"
 	viewBox="0 0 496 512"
+	aria-label="GitHub"
 >
 	<!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
 
