@@ -15,7 +15,7 @@
 		display: flex;
 		flex-direction: column;
 		row-gap: 3em;
-		width: 80%;
 		margin-left: auto;
+		align-items: center;
 	}
 </style>
