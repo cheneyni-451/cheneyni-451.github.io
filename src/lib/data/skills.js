@@ -1,13 +1,13 @@
-import HTMLLogo from '$lib/assets/html.png';
-import CSSLogo from '$lib/assets/css.png';
-import CPPLogo from '$lib/assets/c++.png';
-import TypeScriptLogo from '$lib/assets/typescript.png';
-import JavaScriptLogo from '$lib/assets/javascript.png';
-import LinuxLogo from '$lib/assets/linux.png';
-import PythonLogo from '$lib/assets/python.png';
-import ReactLogo from '$lib/assets/react.png';
-import GitLogo from '$lib/assets/git.png';
-import DynamoDBLogo from '$lib/assets/dynamodb.png';
+import HTMLLogo from '$lib/assets/images/html.png';
+import CSSLogo from '$lib/assets/images/css.png';
+import CPPLogo from '$lib/assets/images/c++.png';
+import TypeScriptLogo from '$lib/assets/images/typescript.png';
+import JavaScriptLogo from '$lib/assets/images/javascript.png';
+import LinuxLogo from '$lib/assets/images/linux.png';
+import PythonLogo from '$lib/assets/images/python.png';
+import ReactLogo from '$lib/assets/images/react.png';
+import GitLogo from '$lib/assets/images/git.png';
+import DynamoDBLogo from '$lib/assets/images/dynamodb.png';
 
 /**
  * @typedef {Object} Skill
