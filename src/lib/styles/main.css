@@ -1,13 +1,12 @@
-@import '$lib/styles/reset.css';
-@import '$lib/styles/colors.css';
-
-body {
-	margin: 0;
-	background-color: var(--cp-base);
-	color: var(--cp-text);
+* {
 	transition:
 		background-color 1s ease,
 		color 1s ease;
+}
+
+body {
+	background-color: var(--cp-base);
+	color: var(--cp-text);
 	font-family: 'Chakra Petch', sans-serif;
 }
 
@@ -22,5 +21,16 @@ a {
 }
 
 b {
+	font-weight: bold;
+}
+
+.tippy-box {
+	background-color: var(--cp-surface0);
+	padding: 0.4em;
+	border-radius: 0.2em;
+}
+
+.tippy-content {
+	font-size: 0.8em;
 	font-weight: bold;
 }

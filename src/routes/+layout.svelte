@@ -18,8 +18,8 @@
 	{#key pathname}
 		<div
 			id="main"
-			in:flyblur|global={{ delay: 200, duration: 600, y: 100 }}
-			out:flyblur|global={{ duration: 300, y: 100 }}
+			in:flyblur|global={{ delay: 300, duration: 600, y: 100 }}
+			out:flyblur|global={{ duration: 200, y: 100 }}
 		>
 			<slot />
 		</div>
@@ -30,7 +30,6 @@
 	@import '$lib/styles/main.css';
 
 	#main {
-		position: absolute;
 		width: 100%;
 	}
 </style>

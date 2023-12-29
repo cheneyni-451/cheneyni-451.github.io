@@ -54,8 +54,10 @@
 						}
 					}}
 				>
-					<a class="left-buttons {url !== '/' && pathname === url ? 'current-page' : ''}" href={url}
-						>{text}</a
+					<a
+						class="left-buttons {url !== '/' && pathname === url ? 'current-page' : ''}"
+						href={url}
+						data-sveltekit-noscroll>{text}</a
 					>
 				</li>
 			{/each}
@@ -97,13 +99,12 @@
 		padding-left: 3em;
 		padding-right: 3em;
 		background-color: color-mix(in srgb, var(--cp-crust) 80%, transparent);
-		backdrop-filter: blur(10px);
-		transition: background-color 1s ease;
-		position: fixed;
+		backdrop-filter: blur(0.3em);
+		position: sticky;
 		top: 0;
 		width: 100%;
 		box-sizing: border-box;
-		z-index: 10000;
+		z-index: 9999;
 	}
 
 	.navbar-left,

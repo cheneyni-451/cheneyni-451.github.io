@@ -1,6 +1,7 @@
 import { resumeItems } from '$lib/data/resumeData';
 
-export function load() {
+/** @type {import('./$types').PageServerLoad} */
+export async function load() {
 	return {
 		resumeItems: resumeItems
 			.sort((a, b) => b.date[0].getTime() - a.date[0].getTime())
