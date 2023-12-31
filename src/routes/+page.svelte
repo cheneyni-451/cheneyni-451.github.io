@@ -1,7 +1,13 @@
 <script>
 	import { tooltip } from '$lib/actions.js';
+	import { pageLoading } from '$lib/stores.js';
+	import { onMount } from 'svelte';
 
 	export let data;
+
+	onMount(() => {
+		pageLoading.set(false);
+	});
 </script>
 
 <article class="section-container">

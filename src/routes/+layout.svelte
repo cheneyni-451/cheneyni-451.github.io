@@ -5,6 +5,9 @@
 	import { navLinks } from '$lib/data/navLinks';
 	import ScrollToTop from '$lib/components/ScrollToTop.svelte';
 	import { fade } from 'svelte/transition';
+	import Spinner from '$lib/components/Spinner.svelte';
+	import { pageLoading } from '$lib/stores';
+	import Overlay from '$lib/components/Overlay.svelte';
 
 	export let data;
 	$: ({ pathname, title } = data);
@@ -20,10 +23,16 @@
 
 <NavBar {navLinks} {pathname} />
 
+{#if $pageLoading}
+	<Overlay>
+		<Spinner />
+	</Overlay>
+{/if}
+
 {#if $navBarTransitioned}
 	{#key pathname}
 		<div
-			id="main"
+			class="main"
 			in:flyblur|global={{ delay: 300, duration: 600, y: 100 }}
 			out:flyblur|global={{ duration: 200, y: 100 }}
 		>
@@ -41,7 +50,7 @@
 <style>
 	@import '$lib/styles/main.css';
 
-	#main {
+	.main {
 		width: 100%;
 	}
 </style>

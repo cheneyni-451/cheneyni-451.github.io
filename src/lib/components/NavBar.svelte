@@ -129,7 +129,7 @@
 		display: block;
 		width: 100%;
 		height: 0.1em;
-		bottom: -1px;
+		bottom: -0.1em;
 		left: 0;
 		background-color: var(--cp-sky);
 		transform: scaleX(0);
@@ -152,8 +152,8 @@
 		opacity: 1;
 	}
 
-	.navbar-left li:first-child a {
-		font-size: 24px;
+	.navbar-left li:first-child .left-buttons {
+		font-size: 1.5em;
 		font-weight: bold;
 	}
 

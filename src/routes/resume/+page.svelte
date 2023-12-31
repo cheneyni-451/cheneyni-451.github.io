@@ -1,6 +1,11 @@
 <script>
 	import ResumeList from '$lib/components/ResumeList.svelte';
+	import { pageLoading } from '$lib/stores.js';
+	import { onMount } from 'svelte';
+
 	export let data;
+
+	onMount(() => pageLoading.set(false));
 </script>
 
 <article class="resume">

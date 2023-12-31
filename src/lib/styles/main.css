@@ -8,6 +8,7 @@ body {
 	background-color: var(--cp-base);
 	color: var(--cp-text);
 	font-family: 'Chakra Petch', sans-serif;
+	transition: none;
 }
 
 a {
