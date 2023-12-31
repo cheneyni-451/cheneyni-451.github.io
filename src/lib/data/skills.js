@@ -8,6 +8,7 @@ import PythonLogo from '$lib/assets/images/python.png';
 import ReactLogo from '$lib/assets/images/react.png';
 import GitLogo from '$lib/assets/images/git.png';
 import DynamoDBLogo from '$lib/assets/images/dynamodb.png';
+import MongoDBLogo from '$lib/assets/images/mongodb.png';
 
 /**
  * @typedef {Object} Skill
@@ -25,6 +26,7 @@ export const skills = [
 	{ text: 'C++', imgSrc: CPPLogo },
 	{ text: 'Python', imgSrc: PythonLogo },
 	{ text: 'DynamoDB', imgSrc: DynamoDBLogo },
+	{ text: 'MongoDB', imgSrc: MongoDBLogo },
 	{ text: 'Git', imgSrc: GitLogo },
 	{ text: 'Linux', imgSrc: LinuxLogo }
 ];
