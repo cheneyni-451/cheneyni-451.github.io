@@ -12,7 +12,10 @@
 
 <article class="section-container">
 	<section class="introduction">
-		<h1 class="hello">Hello! I'm Cheney</h1>
+		<div class="hello-wrapper">
+			<h1 class="hello">Hello!</h1>
+			<h1 class="hello">I'm Cheney</h1>
+		</div>
 		<p class="title">Software Developer</p>
 	</section>
 
@@ -62,6 +65,11 @@
 		gap: 20em;
 	}
 
+	section {
+		margin-left: 3em;
+		margin-right: 3em;
+	}
+
 	/** Introduction **/
 	.introduction {
 		height: 50em;
@@ -70,6 +78,13 @@
 		justify-content: center;
 		align-items: center;
 		gap: 1.5em;
+	}
+
+	.hello-wrapper {
+		display: flex;
+		flex-direction: row;
+		column-gap: 1em;
+		flex-wrap: wrap;
 	}
 
 	.hello {
@@ -97,7 +112,7 @@
 	.paragraph {
 		margin-bottom: 1.5em;
 		max-width: 35em;
-		line-height: 1.6em;
+		line-height: 1.6;
 	}
 
 	/** Skills **/
@@ -114,10 +129,11 @@
 	}
 
 	.skills-wrapper {
-		width: 40%;
+		width: 50%;
 		display: flex;
 		flex-wrap: wrap;
 		flex-direction: row;
+		justify-content: center;
 		gap: 5em;
 	}
 
@@ -138,5 +154,68 @@
 
 	.skill-img:hover {
 		filter: grayscale(0);
+	}
+
+	@media (max-width: 1400px) {
+		.skills-wrapper {
+			width: 80%;
+		}
+	}
+
+	@media (max-width: 800px) {
+		/** Introduction **/
+		.introduction {
+			align-items: flex-start;
+		}
+
+		.hello {
+			font-size: 3.2em;
+		}
+
+		/** Bio **/
+		.bio {
+			align-items: flex-start;
+		}
+
+		.bio-title {
+			margin-bottom: 1em;
+		}
+
+		/** Skills **/
+		.skills {
+			align-items: flex-start;
+		}
+
+		.skills-title {
+			font-size: 1.4em;
+		}
+
+		.skills-wrapper {
+			gap: 2em;
+			justify-content: flex-start;
+			width: 100%;
+		}
+
+		.skill-wrapper {
+			width: 3em;
+			height: 3em;
+		}
+	}
+
+	@media (max-width: 400px) {
+		/** Introduction **/
+		.hello {
+			font-size: 2.5em;
+		}
+
+		/** Bio **/
+		.bio-title {
+			margin-bottom: 0.5em;
+		}
+
+		/** Skills **/
+		.skills-title {
+			font-size: 1em;
+		}
 	}
 </style>
