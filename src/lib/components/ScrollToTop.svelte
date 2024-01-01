@@ -41,4 +41,25 @@
 		border-color: var(--cp-text);
 		fill: var(--cp-text);
 	}
+
+	@media (max-width: 800px) {
+		.to-top-button {
+			bottom: 3em;
+			right: 2em;
+		}
+	}
+
+	@media (max-width: 500px) {
+		.to-top-button {
+			width: 3em;
+			height: 3em;
+			padding: 0.5em;
+		}
+	}
+
+	@media (max-width: 400px) {
+		.to-top-button {
+			right: 1em;
+		}
+	}
 </style>
