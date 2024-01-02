@@ -15,12 +15,18 @@
 
 <style>
 	.resume {
-		margin-top: 3em;
+		margin: 3em;
 	}
 
 	.page-title {
 		font-size: 3.5em;
 		margin-bottom: 1em;
 		text-align: center;
+	}
+
+	@media (max-width: 600px) {
+		.resume {
+			margin: 1.5em;
+		}
 	}
 </style>

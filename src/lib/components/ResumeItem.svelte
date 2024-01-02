@@ -28,6 +28,7 @@
 	.item-date {
 		grid-area: a;
 		color: var(--cp-subtext1);
+		margin-bottom: 0.7em;
 	}
 
 	.item-title {
@@ -49,16 +50,46 @@
 		list-style: none;
 		display: flex;
 		flex-wrap: wrap;
+		column-gap: 0.25em;
+		row-gap: 0.25em;
 	}
 
 	.tag-chip {
 		font-size: 0.9em;
 		font-weight: 600;
-		padding: 0.4em 0.8em 0.4em 0.8em;
+		padding: 0.4em 0.8em;
 		border: 1px solid transparent;
 		border-radius: 3em;
-		margin-right: 0.5em;
 		background-color: color-mix(in srgb, var(--cp-blue) 20%, var(--cp-base));
 		color: color-mix(in srgb, var(--cp-blue) 40%, var(--cp-text));
+	}
+
+	@media (max-width: 600px) {
+		.item-grid {
+			grid-template:
+				'a'
+				'b'
+				'c'
+				'd';
+		}
+	}
+
+	@media (max-width: 400px) {
+		.item-date {
+			font-size: 0.8em;
+		}
+
+		.item-title {
+			font-size: 1em;
+		}
+
+		.item-description {
+			font-size: 0.9em;
+		}
+
+		.tag-chip {
+			font-size: 0.7em;
+			padding: 0.3em 0.6em;
+		}
 	}
 </style>
