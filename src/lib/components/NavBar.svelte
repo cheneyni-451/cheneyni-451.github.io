@@ -10,7 +10,6 @@
 	import { navBarTransitioned } from '$lib/stores';
 	import Bars from '$lib/assets/Bars.svelte';
 	import XMark from '$lib/assets/XMark.svelte';
-	import { browser } from '$app/environment';
 
 	export let navLinks;
 	export let pathname;
@@ -39,7 +38,6 @@
 	$: $navBarTransitioned = navDivTransitioned && navLeftTransitioned && navRightTransitioned;
 
 	let menuOpen = false;
-	$: if (browser) document.body.classList.toggle('menu-open', menuOpen);
 </script>
 
 {#if ready}
@@ -96,13 +94,12 @@
 				</li>
 			{/each}
 
-			<li id="theme-toggle" class="right-buttons" in:slide|global={{ duration: 200 }}>
+			<li class="right-buttons" in:slide|global={{ duration: 200 }}>
 				<ThemeToggle />
 			</li>
 		</ul>
 	</nav>
 	<nav class="mobile-nav">
-		<span in:slide|global={{ duration: 200 }}><ThemeToggle /></span>
 		<button class="menu" on:click={() => (menuOpen = !menuOpen)}
 			><svelte:component this={menuOpen ? XMark : Bars} /></button
 		>
@@ -210,10 +207,6 @@
 	@media (max-width: 700px) {
 		:global(body.menu-open) {
 			overflow: hidden;
-		}
-
-		#theme-toggle {
-			display: none;
 		}
 
 		.mobile-nav {
