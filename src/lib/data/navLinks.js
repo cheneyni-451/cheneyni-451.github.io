@@ -9,7 +9,7 @@
  * @type {NavLink[]}
  */
 export const navLinks = [
-	{ text: 'Cheney Ni', url: '/', title: '' },
+	{ text: 'Home', url: '/', title: '' },
 	{ text: 'Projects', url: '/projects', title: 'Projects' },
 	{ text: 'Resume', url: '/resume', title: 'Resume' }
 ];
