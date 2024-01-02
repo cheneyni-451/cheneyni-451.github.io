@@ -25,7 +25,7 @@
 <button
 	class="theme-toggle"
 	on:click={toggleTheme}
-	style="fill: {currentTheme === 'light' ? 'var(--cp-mauve)' : 'var(--cp-yellow)'}"
+	style:fill={currentTheme === 'light' ? 'var(--cp-mauve)' : 'var(--cp-yellow)'}
 	><svelte:component this={targetThemeIcon} /></button
 >
 
