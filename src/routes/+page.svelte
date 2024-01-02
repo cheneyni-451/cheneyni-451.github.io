@@ -165,6 +165,8 @@
 	@media (max-width: 800px) {
 		/** Introduction **/
 		.introduction {
+			height: 40em;
+
 			align-items: flex-start;
 		}
 
@@ -174,6 +176,8 @@
 
 		/** Bio **/
 		.bio {
+			height: 20em;
+
 			align-items: flex-start;
 		}
 
@@ -215,7 +219,21 @@
 
 		/** Skills **/
 		.skills-title {
-			font-size: 1em;
+			font-size: 1.5em;
+		}
+	}
+
+	@media (max-height: 700px) {
+		.section-container {
+			gap: 10em;
+		}
+
+		.introduction {
+			height: 30em;
+		}
+
+		.bio {
+			height: 45em;
 		}
 	}
 </style>
