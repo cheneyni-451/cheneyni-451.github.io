@@ -65,7 +65,7 @@
 							}
 						}}
 						class="left-buttons"
-						class:current-page={i !== 0 && pathname === url}
+						class:current-page={pathname === url}
 					>
 						<a on:click={() => (menuOpen = false)} href={url} data-sveltekit-noscroll>{text}</a>
 					</li>
