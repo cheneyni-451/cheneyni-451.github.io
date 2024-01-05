@@ -72,7 +72,7 @@
 
 	/** Introduction **/
 	.introduction {
-		height: 50em;
+		height: 90vh;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -98,7 +98,6 @@
 
 	/** Bio **/
 	.bio {
-		height: 40em;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -106,7 +105,7 @@
 
 	.bio-title {
 		font-size: 1.8em;
-		margin-bottom: 2em;
+		margin-bottom: 1em;
 	}
 
 	.paragraph {
@@ -117,10 +116,11 @@
 
 	/** Skills **/
 	.skills {
+		margin-bottom: 15vh;
+
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		height: 40em;
 	}
 
 	.skills-title {
@@ -165,8 +165,6 @@
 	@media (max-width: 800px) {
 		/** Introduction **/
 		.introduction {
-			height: 40em;
-
 			align-items: flex-start;
 		}
 
@@ -176,13 +174,7 @@
 
 		/** Bio **/
 		.bio {
-			height: 20em;
-
 			align-items: flex-start;
-		}
-
-		.bio-title {
-			margin-bottom: 1em;
 		}
 
 		/** Skills **/
@@ -212,11 +204,6 @@
 			font-size: 2.5em;
 		}
 
-		/** Bio **/
-		.bio-title {
-			margin-bottom: 0.5em;
-		}
-
 		/** Skills **/
 		.skills-title {
 			font-size: 1.5em;
@@ -226,14 +213,6 @@
 	@media (max-height: 700px) {
 		.section-container {
 			gap: 10em;
-		}
-
-		.introduction {
-			height: 30em;
-		}
-
-		.bio {
-			height: 45em;
 		}
 	}
 </style>
