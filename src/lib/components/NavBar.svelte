@@ -106,45 +106,47 @@
 		</div>
 
 		{#if menuOpen}
-			<Overlay>
-				<nav class="overlay-nav">
-					<div class="overlay-top-row">
-						<div class="overlay-name-wrapper" in:fade|global={{ delay: 400, duration: 200 }}>
-							<img
-								class="logo"
-								src={$colorScheme === 'dark' ? '/white_text_logo.png' : '/black_text_logo.png'}
-								alt="logo"
-							/>
-							<h1 class="overlay-name">Cheney Ni</h1>
-						</div>
-					</div>
-
-					<div class="overlay-links-wrapper">
-						<div class="overlay-page-links-wrapper">
-							{#each navLinks as { url, text }, i}
-								<a
-									class="overlay-page-link"
-									href={url}
-									data-sveltekit-noscroll
-									in:fade|global={{ delay: i * 200 + 600, duration: 200 }}
-									on:click={() => (menuOpen = false)}>{text}</a
-								>
-							{/each}
+			<div class="overlay-wrapper">
+				<Overlay>
+					<nav class="overlay-nav">
+						<div class="overlay-top-row">
+							<div class="overlay-name-wrapper" in:fade|global={{ delay: 400, duration: 200 }}>
+								<img
+									class="logo"
+									src={$colorScheme === 'dark' ? '/white_text_logo.png' : '/black_text_logo.png'}
+									alt="logo"
+								/>
+								<h1 class="overlay-name">Cheney Ni</h1>
+							</div>
 						</div>
 
-						<div
-							class="overlay-social-links-wrapper"
-							in:fade|global={{ delay: 400, duration: 200 }}
-						>
-							{#each linksRight as { url, iconComponent, scale }, i}
-								<a class="overlay-social-link" href={url} target="_blank"
-									><svelte:component this={iconComponent} {scale} /></a
-								>
-							{/each}
+						<div class="overlay-links-wrapper">
+							<div class="overlay-page-links-wrapper">
+								{#each navLinks as { url, text }, i}
+									<a
+										class="overlay-page-link"
+										href={url}
+										data-sveltekit-noscroll
+										in:fade|global={{ delay: i * 200 + 600, duration: 200 }}
+										on:click={() => (menuOpen = false)}>{text}</a
+									>
+								{/each}
+							</div>
+
+							<div
+								class="overlay-social-links-wrapper"
+								in:fade|global={{ delay: 400, duration: 200 }}
+							>
+								{#each linksRight as { url, iconComponent, scale }, i}
+									<a class="overlay-social-link" href={url} target="_blank"
+										><svelte:component this={iconComponent} {scale} /></a
+									>
+								{/each}
+							</div>
 						</div>
-					</div>
-				</nav>
-			</Overlay>
+					</nav>
+				</Overlay>
+			</div>
 		{/if}
 	{/if}
 {/if}
@@ -247,6 +249,11 @@
 		right: 1em;
 
 		z-index: 1000;
+	}
+
+	.overlay-wrapper {
+		position: fixed;
+		top: 0;
 	}
 
 	.overlay-nav {
