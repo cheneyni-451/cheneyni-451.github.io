@@ -1,23 +1,30 @@
 <script>
-	import GitHubIcon from '$lib/assets/GitHubIcon.svelte';
-	import LinkedInIcon from '$lib/assets/LinkedInIcon.svelte';
 	import { onMount } from 'svelte';
-	import { flyblur } from '$lib/transitions';
-	import { slide } from 'svelte/transition';
+	import ThemeToggle from './ThemeToggle.svelte';
+	import Bars from '$lib/assets/Bars.svelte';
+	import GitHubIcon from '$lib/assets/GitHubIcon.svelte';
 	import { tweened } from 'svelte/motion';
 	import { expoOut } from 'svelte/easing';
-	import ThemeToggle from './ThemeToggle.svelte';
-	import { navBarTransitioned } from '$lib/stores';
-	import Bars from '$lib/assets/Bars.svelte';
+	import LinkedInIcon from '$lib/assets/LinkedInIcon.svelte';
+	import { colorScheme, navBarTransitioned } from '$lib/stores';
+	import Overlay from './Overlay.svelte';
+	import { flyblur } from '$lib/transitions';
+	import { fade, slide } from 'svelte/transition';
 	import XMark from '$lib/assets/XMark.svelte';
 
 	export let navLinks;
 	export let pathname;
 
+	let navDivTransitioned = false;
+	let navLeftTransitioned = false;
+	let navRightTransitioned = false;
+	let mobileNavTransitioned = false;
+	$: $navBarTransitioned =
+		mobileNavTransitioned || (navDivTransitioned && navLeftTransitioned && navRightTransitioned);
+
 	let ready = false;
 	onMount(() => (ready = true));
 
-	const linksLeft = navLinks;
 	const linksRight = [
 		{
 			iconComponent: GitHubIcon,
@@ -31,96 +38,126 @@
 		}
 	];
 
-	let navDivTransitioned = false;
-	let navLeftTransitioned = false;
-	let navRightTransitioned = false;
-
-	$: $navBarTransitioned = navDivTransitioned && navLeftTransitioned && navRightTransitioned;
-
+	let innerWidth;
 	let menuOpen = false;
 </script>
 
-{#if ready}
-	<nav
-		class="navbar"
-		class:menu-open={menuOpen}
-		in:flyblur={{ duration: 1000, y: -100 }}
-		on:introend={() => {
-			navDivTransitioned = true;
-		}}
-	>
-		<div class="navbar-left-wrapper">
-			<h1 class="name">
-				<a class:menu-open={menuOpen} href={menuOpen ? 'javascript:void(0);' : '/'}>Cheney Ni</a>
-			</h1>
-			<ul class="navbar-left">
-				{#each linksLeft as { url, text }, i}
-					<li
-						in:slide|global={{ delay: i * 200 + 400, duration: 200 }}
-						on:introend={() => {
-							if (i === linksLeft.length - 1) {
-								navLeftTransitioned = true;
-							}
-						}}
-						class="left-buttons"
-						class:current-page={pathname === url}
-					>
-						<a on:click={() => (menuOpen = false)} href={url} data-sveltekit-noscroll>{text}</a>
-					</li>
-				{/each}
-			</ul>
-		</div>
-		<ul class="navbar-right">
-			{#each linksRight as { url, iconComponent, scale }, i}
-				<li
-					in:slide|global={{
-						delay: (linksRight.length - i) * 200 + 400,
-						duration: 200
-					}}
-					on:introend={() => {
-						if (i === linksRight.length - 1) {
-							navRightTransitioned = true;
-						}
-					}}
-					class="right-buttons"
-				>
-					<a
-						on:click={() => (menuOpen = false)}
-						on:pointerenter={() => scale.set(1.25)}
-						on:pointerleave={() => scale.set(1)}
-						href={url}
-						target="_blank"><svelte:component this={iconComponent} {scale} /></a
-					>
-				</li>
-			{/each}
+<svelte:window bind:innerWidth />
 
-			<li class="right-buttons" in:slide|global={{ duration: 200 }}>
-				<ThemeToggle />
-			</li>
-		</ul>
-	</nav>
-	<nav class="mobile-nav">
-		<button class="menu" on:click={() => (menuOpen = !menuOpen)}
-			><svelte:component this={menuOpen ? XMark : Bars} /></button
+{#if ready}
+	{#if innerWidth > 700}
+		<nav
+			class="top-nav"
+			in:flyblur|global={{ duration: 1000, y: -100 }}
+			on:introend={() => (navDivTransitioned = true)}
 		>
-	</nav>
+			<div class="main-nav">
+				<div class="navbar-left">
+					<h1 class="name"><a href="/">Cheney Ni</a></h1>
+					<div class="page-link-wrapper">
+						{#each navLinks as { url, text }, i}
+							<a
+								class="page-link"
+								class:current-page={pathname === url}
+								href={url}
+								data-sveltekit-noscroll
+								in:slide|global={{ delay: i * 200 + 400, duration: 200 }}
+								on:introend={() => {
+									if (i === navLinks.length - 1) {
+										navLeftTransitioned = true;
+									}
+								}}>{text}</a
+							>
+						{/each}
+					</div>
+				</div>
+				<div class="navbar-right">
+					{#each linksRight as { url, iconComponent, scale }, i}
+						<a
+							href={url}
+							target="_blank"
+							in:slide|global={{ delay: (linksRight.length - i) * 200 + 400, duration: 200 }}
+							on:introend={() => {
+								if (i === linksRight.length - 1) {
+									navRightTransitioned = true;
+								}
+							}}
+							on:pointerenter={() => scale.set(1.25)}
+							on:pointerleave={() => scale.set(1)}
+							><svelte:component this={iconComponent} {scale} /></a
+						>
+					{/each}
+				</div>
+			</div>
+			<div class="controls-wrapper">
+				<ThemeToggle />
+			</div>
+		</nav>
+	{:else}
+		<div
+			class="overlay-controls-wrapper"
+			in:flyblur|global={{ duration: 400, y: -100 }}
+			on:introend={() => (mobileNavTransitioned = true)}
+		>
+			<ThemeToggle />
+			<button class="menu-button" on:click={() => (menuOpen = !menuOpen)}>
+				<svelte:component this={menuOpen ? XMark : Bars} />
+			</button>
+		</div>
+
+		{#if menuOpen}
+			<Overlay>
+				<nav class="overlay-nav">
+					<div class="overlay-top-row">
+						<div class="overlay-name-wrapper" in:fade|global={{ delay: 400, duration: 200 }}>
+							<img
+								class="logo"
+								src={$colorScheme === 'dark' ? '/white_text_logo.png' : '/black_text_logo.png'}
+								alt="logo"
+							/>
+							<h1 class="overlay-name">Cheney Ni</h1>
+						</div>
+					</div>
+
+					<div class="overlay-links-wrapper">
+						<div class="overlay-page-links-wrapper">
+							{#each navLinks as { url, text }, i}
+								<a
+									class="overlay-page-link"
+									href={url}
+									data-sveltekit-noscroll
+									in:fade|global={{ delay: i * 200 + 600, duration: 200 }}
+									on:click={() => (menuOpen = false)}>{text}</a
+								>
+							{/each}
+						</div>
+
+						<div
+							class="overlay-social-links-wrapper"
+							in:fade|global={{ delay: 400, duration: 200 }}
+						>
+							{#each linksRight as { url, iconComponent, scale }, i}
+								<a class="overlay-social-link" href={url} target="_blank"
+									><svelte:component this={iconComponent} {scale} /></a
+								>
+							{/each}
+						</div>
+					</div>
+				</nav>
+			</Overlay>
+		{/if}
+	{/if}
 {/if}
 
 <style>
-	button {
-		border: none;
-		background-color: transparent;
-	}
-
-	.navbar {
-		width: 100%;
+	.top-nav {
 		height: 4em;
-		padding-left: 3em;
-		padding-right: 3em;
+		padding: 0em 2em;
 
 		display: flex;
 		flex-direction: row;
-		justify-content: space-between;
+		align-items: center;
+		column-gap: 2em;
 
 		position: sticky;
 		top: 0;
@@ -128,34 +165,43 @@
 		background-color: color-mix(in srgb, var(--cp-crust) 80%, transparent);
 		backdrop-filter: blur(0.3em);
 
-		box-sizing: border-box;
 		z-index: 1000;
 	}
 
-	.navbar-left-wrapper {
+	.main-nav {
+		width: 100%;
+
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	.navbar-left {
 		display: flex;
 		flex-direction: row;
 		align-items: center;
-		gap: 2em;
+		column-gap: 2em;
 	}
 
-	.navbar-left,
-	.navbar-right {
+	.name {
+		font-size: 1.5em;
+		font-weight: bold;
+		transition-timing-function: cubic-bezier();
+	}
+
+	.page-link-wrapper {
 		display: flex;
-		flex-direction: row;
-		align-items: center;
-		list-style-type: none;
-		gap: 2em;
-		padding: 0;
+		column-gap: 1em;
 	}
 
-	.left-buttons {
+	.page-link {
 		position: relative;
-		font-size: 18px;
+
+		font-size: 1.1em;
 		font-weight: bold;
 	}
 
-	.left-buttons::before {
+	.page-link::before {
 		content: '';
 		position: absolute;
 		display: block;
@@ -170,25 +216,8 @@
 			background-color 0.3s ease;
 	}
 
-	.left-buttons:hover::before {
+	.page-link:hover::before {
 		transform: scaleX(1);
-	}
-
-	.right-buttons {
-		fill: var(--cp-text);
-		opacity: 0.8;
-		transition: fill 0.5s ease-out;
-	}
-
-	.right-buttons:hover {
-		opacity: 1;
-	}
-
-	.name {
-		font-size: 1.5em;
-		font-weight: bold;
-
-		display: flex;
 	}
 
 	.current-page::before {
@@ -196,97 +225,102 @@
 		background-color: var(--cp-blue);
 	}
 
-	.mobile-nav {
-		display: none;
-	}
+	.navbar-right {
+		display: flex;
+		flex-direction: row;
+		column-gap: 2em;
 
-	.menu {
 		fill: var(--cp-text);
 	}
 
-	@media (max-width: 700px) {
-		:global(body.menu-open) {
-			overflow: hidden;
-		}
+	/** Overlay **/
+	.overlay-controls-wrapper {
+		height: 2em;
 
-		.mobile-nav {
-			width: 6em;
-			height: 4em;
-			margin-left: auto;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		column-gap: 1em;
 
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			gap: 1em;
+		position: fixed;
+		top: 1em;
+		right: 1em;
 
-			position: sticky;
-			top: 0;
-
-			background-color: transparent;
-
-			z-index: 1000;
-		}
-
-		.navbar {
-			width: 100%;
-			height: 0;
-			padding-left: 1em;
-			padding-right: 1em;
-
-			flex-direction: column;
-			justify-content: space-between;
-
-			position: fixed;
-			top: 0;
-
-			overflow: hidden;
-			clear: both;
-
-			z-index: 999;
-
-			transition: all 0.3s ease;
-		}
-
-		.navbar.menu-open {
-			height: 100%;
-			padding-top: 1em;
-			padding-bottom: 3em;
-		}
-
-		a.menu-open {
-			cursor: default;
-		}
-
-		.navbar-left-wrapper {
-			flex-direction: column;
-			gap: 4em;
-		}
-
-		.name {
-			width: 100%;
-			font-size: 3em;
-		}
-
-		.navbar-left {
-			flex-direction: column;
-			row-gap: 4em;
-		}
-
-		.navbar-right {
-			justify-content: center;
-		}
-
-		.left-buttons {
-			font-size: 2em;
-		}
+		z-index: 1000;
 	}
 
-	@media (max-width: 400px) {
-		.name {
-			font-size: 2em;
-		}
-		.navbar-left {
-			font-size: 0.8em;
-		}
+	.overlay-nav {
+		height: 100%;
+
+		display: flex;
+		flex-direction: column;
+	}
+
+	.overlay-top-row {
+		margin: 1em 1em;
+
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	.overlay-name-wrapper {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		gap: 1em;
+		align-items: center;
+	}
+
+	.logo {
+		height: 2em;
+	}
+
+	.overlay-name {
+		font-size: 2em;
+	}
+
+	.controls-wrapper {
+		column-gap: 1em;
+	}
+
+	.menu-button {
+		border: none;
+
+		background-color: transparent;
+		fill: var(--cp-text);
+
+		cursor: pointer;
+	}
+
+	.overlay-links-wrapper {
+		height: 100%;
+		margin: 2em 1em;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	.overlay-page-links-wrapper {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		row-gap: 2em;
+	}
+
+	.overlay-page-link {
+		font-size: 1.75em;
+	}
+
+	.overlay-social-links-wrapper {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		column-gap: 2em;
+	}
+
+	.overlay-social-link {
+		fill: var(--cp-text);
 	}
 </style>

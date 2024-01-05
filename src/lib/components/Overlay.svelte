@@ -1,9 +1,18 @@
 <script>
-	import { onMount } from 'svelte';
+	import { browser } from '$app/environment';
+	import { onDestroy, onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 
 	let mounted = false;
-	onMount(() => (mounted = true));
+	onMount(() => {
+		mounted = true;
+
+		if (browser) document.body.classList.toggle('noscroll', true);
+	});
+
+	onDestroy(() => {
+		if (browser) document.body.classList.toggle('noscroll', false);
+	});
 </script>
 
 {#if mounted}
@@ -13,11 +22,16 @@
 {/if}
 
 <style>
+	:global(body.noscroll) {
+		overflow: hidden;
+	}
+
 	.overlay {
 		position: absolute;
 		width: 100vw;
 		height: 100vh;
 		top: 0;
 		background-color: var(--cp-mantle);
+		z-index: 10;
 	}
 </style>
