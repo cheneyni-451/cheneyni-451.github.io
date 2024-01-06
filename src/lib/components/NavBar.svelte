@@ -127,7 +127,7 @@
 										class="overlay-page-link"
 										href={url}
 										data-sveltekit-noscroll
-										in:fade|global={{ delay: i * 200 + 600, duration: 200 }}
+										in:fade|global={{ delay: i * 100 + 600, duration: 200 }}
 										on:click={() => (menuOpen = false)}>{text}</a
 									>
 								{/each}
@@ -163,7 +163,7 @@
 
 		position: sticky;
 		top: 0;
-		
+
 		background-color: var(--cp-crust);
 		backdrop-filter: blur(0.3em);
 		-webkit-backdrop-filter: blur(0.3em);
