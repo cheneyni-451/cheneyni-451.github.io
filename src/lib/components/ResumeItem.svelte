@@ -57,19 +57,11 @@
 	.tag-chip {
 		font-size: 0.9em;
 		font-weight: 600;
-		padding: 0.4em 0.8em;
+		padding: 0.4em 0.6em;
 		border: 1px solid transparent;
 		border-radius: 3em;
-		background-color: var(--cp-lavender);
+		background-color: var(--cp-mauve);
 		color: var(--cp-base);
-	}
-
-	@supports (background-color: color-mix(in srgb, var(--cp-blue) 20%, var(--cp-base))) and
-		(color: color-mix(in srgb, var(--cp-blue) 40%, var(--cp-text))) {
-		.tag-chip {
-			background-color: color-mix(in srgb, var(--cp-blue) 20%, var(--cp-base));
-			color: color-mix(in srgb, var(--cp-blue) 40%, var(--cp-text));
-		}
 	}
 
 	@media (max-width: 600px) {
@@ -79,25 +71,6 @@
 				'b'
 				'c'
 				'd';
-		}
-	}
-
-	@media (max-width: 400px) {
-		.item-date {
-			font-size: 0.8em;
-		}
-
-		.item-title {
-			font-size: 1em;
-		}
-
-		.item-description {
-			font-size: 0.9em;
-		}
-
-		.tag-chip {
-			font-size: 0.7em;
-			padding: 0.3em 0.6em;
 		}
 	}
 </style>

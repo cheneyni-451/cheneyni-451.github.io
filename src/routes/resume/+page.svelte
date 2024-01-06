@@ -32,7 +32,6 @@
 		display: flex;
 		flex-direction: column;
 		row-gap: 3em;
-		margin-left: auto;
 		align-items: center;
 	}
 
