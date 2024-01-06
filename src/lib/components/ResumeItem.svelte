@@ -60,8 +60,16 @@
 		padding: 0.4em 0.8em;
 		border: 1px solid transparent;
 		border-radius: 3em;
-		background-color: color-mix(in srgb, var(--cp-blue) 20%, var(--cp-base));
-		color: color-mix(in srgb, var(--cp-blue) 40%, var(--cp-text));
+		background-color: var(--cp-lavender);
+		color: var(--cp-base);
+	}
+
+	@supports (background-color: color-mix(in srgb, var(--cp-blue) 20%, var(--cp-base))) and
+		(color: color-mix(in srgb, var(--cp-blue) 40%, var(--cp-text))) {
+		.tag-chip {
+			background-color: color-mix(in srgb, var(--cp-blue) 20%, var(--cp-base));
+			color: color-mix(in srgb, var(--cp-blue) 40%, var(--cp-text));
+		}
 	}
 
 	@media (max-width: 600px) {

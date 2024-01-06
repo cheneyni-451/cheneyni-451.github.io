@@ -163,11 +163,18 @@
 
 		position: sticky;
 		top: 0;
-
-		background-color: color-mix(in srgb, var(--cp-crust) 80%, transparent);
+		
+		background-color: var(--cp-crust);
 		backdrop-filter: blur(0.3em);
+		-webkit-backdrop-filter: blur(0.3em);
 
 		z-index: 1000;
+	}
+
+	@supports (background-color: color-mix(in srgb, var(--cp-crust) 80%, transparent)) {
+		.top-nav {
+			background-color: color-mix(in srgb, var(--cp-crust) 80%, transparent);
+		}
 	}
 
 	.main-nav {
@@ -302,7 +309,7 @@
 
 	.overlay-links-wrapper {
 		height: 100%;
-		margin: 2em 1em;
+		margin: 2em 1em 4em 1em;
 
 		display: flex;
 		flex-direction: column;
