@@ -21,8 +21,6 @@
 
 <svelte:window bind:scrollY />
 
-<NavBar {navLinks} {pathname} />
-
 {#if $pageLoading}
 	<Overlay>
 		<Spinner />
@@ -46,6 +44,8 @@
 		<ScrollToTop />
 	</div>
 {/if}
+
+<NavBar {navLinks} {pathname} />
 
 <style>
 	@import '$lib/styles/main.css';
