@@ -125,6 +125,7 @@
 								{#each navLinks as { url, text }, i}
 									<a
 										class="overlay-page-link"
+										class:current-page={pathname === url}
 										href={url}
 										data-sveltekit-noscroll
 										in:fade|global={{ delay: i * 100 + 600, duration: 200 }}
@@ -213,7 +214,8 @@
 		font-weight: bold;
 	}
 
-	.page-link::before {
+	.page-link::before,
+	.overlay-page-link::before {
 		content: '';
 		position: absolute;
 		display: block;
@@ -327,7 +329,10 @@
 	}
 
 	.overlay-page-link {
+		position: relative;
+
 		font-size: 1.75em;
+		font-weight: bold;
 	}
 
 	.overlay-social-links-wrapper {
