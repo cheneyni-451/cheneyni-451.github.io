@@ -153,15 +153,18 @@
 
 <style>
 	.top-nav {
+		width: 100%;
 		height: 4em;
 		padding: 0em 2em;
+
+		box-sizing: border-box;
 
 		display: flex;
 		flex-direction: row;
 		align-items: center;
 		column-gap: 2em;
 
-		position: sticky;
+		position: fixed;
 		top: 0;
 
 		background-color: var(--cp-crust);
