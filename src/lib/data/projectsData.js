@@ -10,27 +10,29 @@
  */
 export const projectItems = [
 	{
-		title: 'Project',
-		description:
-			'Proin varius cursus enim, sit amet malesuada risus posuere vitae. Vestibulum ultrices congue convallis. Curabitur lectus sapien, accumsan quis tortor sed, faucibus dignissim elit. Nulla mollis sed nulla in imperdiet. Pellentesque ultrices nisi nec sagittis mattis. Ut eu rhoncus nunc, interdum facilisis sapien. Nunc lorem nibh, sagittis at consectetur non, pellentesque et purus.',
-		tags: ['Python', 'JavaScript', 'Java', 'HTML']
+		title: 'Personal Website',
+		description: `It is the website that you are on right now. After hearing about Svelte,
+      I wanted to make something with it, so I decided to make my personal website using Svelte to learn the framework.`,
+		tags: ['Svelte', 'JavaScript', 'CSS', 'HTML']
 	},
 	{
-		title: 'Project',
-		description:
-			'Proin varius cursus enim, sit amet malesuada risus posuere vitae. Vestibulum ultrices congue convallis. Curabitur lectus sapien, accumsan quis tortor sed, faucibus dignissim elit. Nulla mollis sed nulla in imperdiet. Pellentesque ultrices nisi nec sagittis mattis. Ut eu rhoncus nunc, interdum facilisis sapien. Nunc lorem nibh, sagittis at consectetur non, pellentesque et purus.',
-		tags: ['Python', 'JavaScript', 'Java', 'HTML']
+		title: 'Sudoku Solver Browser Extension',
+		description: `Extensible sudoku solving browser extension used to solve online sudoku puzzle quickly.
+    Compatible with any sudoku website through adding a parser. Not published due to ethics.`,
+		tags: ['JavaScript']
 	},
 	{
-		title: 'Project',
-		description:
-			'Proin varius cursus enim, sit amet malesuada risus posuere vitae. Vestibulum ultrices congue convallis. Curabitur lectus sapien, accumsan quis tortor sed, faucibus dignissim elit. Nulla mollis sed nulla in imperdiet. Pellentesque ultrices nisi nec sagittis mattis. Ut eu rhoncus nunc, interdum facilisis sapien. Nunc lorem nibh, sagittis at consectetur non, pellentesque et purus.',
-		tags: ['Python', 'JavaScript', 'Java', 'HTML']
+		title: 'Thread Library',
+		description: `Worked with in a group of 3 to implement a user level thread library,
+    including synchronization primitives (mutex and condition variables) and FIFO CPU scheduling.`,
+		tags: ['School Project', 'C++']
 	},
 	{
-		title: 'Project',
-		description:
-			'Proin varius cursus enim, sit amet malesuada risus posuere vitae. Vestibulum ultrices congue convallis. Curabitur lectus sapien, accumsan quis tortor sed, faucibus dignissim elit. Nulla mollis sed nulla in imperdiet. Pellentesque ultrices nisi nec sagittis mattis. Ut eu rhoncus nunc, interdum facilisis sapien. Nunc lorem nibh, sagittis at consectetur non, pellentesque et purus.',
-		tags: ['Python', 'JavaScript', 'Java', 'HTML']
+		title: 'Network File System',
+		description: `Implemented low-level network file server in a team with
+    read-write support and communication throw TCP socket.
+    Designed with multithreading to allow concurrent operations from an
+    arbitrary number of clients, and database consistency regardless of erratic system crashes.`,
+		tags: ['School Project', 'C++']
 	}
 ];
