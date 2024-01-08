@@ -72,7 +72,7 @@
 
 	/** Introduction **/
 	.introduction {
-		height: 90vh;
+		height: 80vh;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;

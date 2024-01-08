@@ -16,6 +16,7 @@
 <style>
 	.project-wrapper {
 		width: 30%;
+		max-width: 500px;
 
 		display: flex;
 		flex-direction: column;
@@ -53,7 +54,13 @@
 		color: var(--cp-base);
 	}
 
-	@media (max-width: 600px) {
+	@media (max-width: 1200px) {
+		.project-wrapper {
+			width: 50%;
+		}
+	}
+
+	@media (max-width: 800px) {
 		.project-wrapper {
 			width: 80%;
 		}
