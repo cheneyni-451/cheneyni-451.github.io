@@ -242,6 +242,7 @@
 	.navbar-right {
 		display: flex;
 		flex-direction: row;
+		align-items: center;
 		column-gap: 2em;
 
 		fill: var(--cp-text);
