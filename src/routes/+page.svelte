@@ -25,7 +25,7 @@
 			I graduated from the <a href="https://eecs.engin.umich.edu/" target="_blank"
 				>University of Michigan</a
 			>
-			at the end of 2022, completing two summer internships at
+			at the end of 2022 while completing two summer internships at
 			<a href="https://www.redroverk12.com/" target="_blank">Red Rover</a>
 			and
 			<a href="https://aws.amazon.com/" target="_blank">AWS</a>. After graduating, I continued

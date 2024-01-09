@@ -18,7 +18,7 @@ export const projectItems = [
 	{
 		title: 'Sudoku Solver Browser Extension',
 		description: `Extensible sudoku solving browser extension used to solve online sudoku puzzle quickly.
-    Compatible with any sudoku website through adding a parser. Not published due to ethics.`,
+    Compatible with any sudoku website by adding a parser.`,
 		tags: ['JavaScript']
 	},
 	{
@@ -30,7 +30,7 @@ export const projectItems = [
 	{
 		title: 'Network File System',
 		description: `Implemented low-level network file server in a team with
-    read-write support and communication throw TCP socket.
+    read-write support and communication through TCP.
     Designed with multithreading to allow concurrent operations from an
     arbitrary number of clients, and database consistency regardless of erratic system crashes.`,
 		tags: ['School Project', 'C++']
