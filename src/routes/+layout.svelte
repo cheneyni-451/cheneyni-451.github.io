@@ -8,11 +8,14 @@
 	import Spinner from '$lib/components/Spinner.svelte';
 	import { pageLoading } from '$lib/stores';
 	import Overlay from '$lib/components/Overlay.svelte';
+	import { afterNavigate } from '$app/navigation';
 
 	export let data;
 	$: ({ pathname, title } = data);
 
 	let scrollY;
+
+	afterNavigate(() => window.scrollTo({ top: 0, behavior: 'smooth' }));
 </script>
 
 <svelte:head>
