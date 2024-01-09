@@ -230,6 +230,10 @@
 			background-color 0.3s ease;
 	}
 
+	.overlay-page-link::before {
+		bottom: -0.05em;
+	}
+
 	.page-link:hover::before {
 		transform: scaleX(1);
 	}
