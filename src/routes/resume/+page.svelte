@@ -1,25 +1,46 @@
 <script>
+	import ExternalLink from '$lib/assets/ExternalLink.svelte';
 	import ResumeItem from '$lib/components/ResumeItem.svelte';
-	import { pageLoading } from '$lib/stores.js';
+	import { pageLoading } from '$lib/stores';
 	import { onMount } from 'svelte';
 
 	export let data;
 
 	onMount(() => pageLoading.set(false));
+
+	let resumeLinkHover = false;
 </script>
 
 <article class="resume">
 	<h1 class="page-title">Resume</h1>
-	<div class="resume-list">
-		{#each data.resumeItems as resumeItem}
-			<ResumeItem {resumeItem} />
-		{/each}
+	<div class="content">
+		<div class="resume-list">
+			{#each data.resumeItems as resumeItem}
+				<ResumeItem {resumeItem} />
+			{/each}
+		</div>
+		<a
+			on:mouseover={() => (resumeLinkHover = true)}
+			on:focus={() => (resumeLinkHover = true)}
+			on:mouseout={() => (resumeLinkHover = false)}
+			on:blur={() => (resumeLinkHover = false)}
+			class="resume-link"
+			href="/Ni-Cheney_Resume.pdf"
+			target="_blank"
+			>View full resume
+			<span class="external-link-icon"><ExternalLink scale={0.7} hover={resumeLinkHover} /></span>
+		</a>
 	</div>
 </article>
 
 <style>
 	.resume {
 		margin: 3em;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: center;
 	}
 
 	.page-title {
@@ -28,11 +49,36 @@
 		text-align: center;
 	}
 
+	.content {
+		display: inline flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 2em;
+	}
+
 	.resume-list {
 		display: flex;
 		flex-direction: column;
 		row-gap: 3em;
 		align-items: center;
+	}
+
+	.resume-link {
+		font-size: 1.1em;
+		font-weight: bold;
+	}
+
+	.resume-link:hover {
+		color: var(--cp-blue);
+		transition-duration: 0.3s;
+	}
+
+	.external-link-icon {
+		margin-left: 0.2em;
+
+		display: inline-block;
+
+		fill: var(--cp-text);
 	}
 
 	@media (max-width: 600px) {
