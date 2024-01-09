@@ -14,5 +14,6 @@
 <style>
 	svg {
 		display: block;
+		filter: drop-shadow(0px 0px 4px var(--cp-base));
 	}
 </style>

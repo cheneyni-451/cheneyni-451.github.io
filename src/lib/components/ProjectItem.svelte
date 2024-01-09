@@ -56,7 +56,7 @@
 
 	@media (max-width: 1200px) {
 		.project-wrapper {
-			width: 50%;
+			width: 55%;
 		}
 	}
 
