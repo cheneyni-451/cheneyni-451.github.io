@@ -42,7 +42,7 @@
 	{/key}
 {/if}
 
-{#if scrollY > 400}
+{#if scrollY > 0}
 	<div transition:fade={{ duration: 200 }}>
 		<ScrollToTop />
 	</div>
