@@ -27,12 +27,16 @@
 
 		font-size: 1.1em;
 		font-weight: 900;
+
+		transition: color 1s ease;
 	}
 
 	.description {
 		margin-bottom: 0.8em;
 
 		color: var(--cp-subtext1);
+
+		transition: color 1s ease;
 	}
 
 	.tags-list {
@@ -52,6 +56,10 @@
 
 		background-color: var(--cp-mauve);
 		color: var(--cp-base);
+
+		transition:
+			background-color 1s ease,
+			color 1s ease;
 	}
 
 	@media (max-width: 1200px) {
