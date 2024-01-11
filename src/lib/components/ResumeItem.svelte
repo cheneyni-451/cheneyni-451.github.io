@@ -29,6 +29,8 @@
 		grid-area: a;
 		color: var(--cp-subtext1);
 		margin-bottom: 0.7em;
+
+		transition: color 1s ease;
 	}
 
 	.item-title {
@@ -36,6 +38,8 @@
 		font-size: 1.1em;
 		font-weight: 900;
 		margin-bottom: 0.5em;
+
+		transition: color 1s ease;
 	}
 
 	.item-description {
@@ -43,6 +47,8 @@
 		max-width: 25em;
 		color: var(--cp-subtext1);
 		margin-bottom: 0.8em;
+
+		transition: color 1s ease;
 	}
 
 	.tags-list {
@@ -62,6 +68,10 @@
 		border-radius: 3em;
 		background-color: var(--cp-mauve);
 		color: var(--cp-base);
+
+		transition:
+			background-color 1s ease,
+			color 1s ease;
 	}
 
 	@media (max-width: 600px) {

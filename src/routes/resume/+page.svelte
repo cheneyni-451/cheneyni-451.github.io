@@ -47,6 +47,8 @@
 		font-size: 3.5em;
 		margin-bottom: 1em;
 		text-align: center;
+
+		transition: color 1s ease;
 	}
 
 	.content {
@@ -66,6 +68,8 @@
 	.resume-link {
 		font-size: 1.1em;
 		font-weight: bold;
+
+		transition: color 1s ease;
 	}
 
 	.resume-link:hover {
