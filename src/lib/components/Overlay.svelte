@@ -1,12 +1,8 @@
 <script>
 	import { browser } from '$app/environment';
 	import { onDestroy, onMount } from 'svelte';
-	import { fade } from 'svelte/transition';
 
-	let mounted = false;
 	onMount(() => {
-		mounted = true;
-
 		if (browser) document.body.classList.toggle('noscroll', true);
 	});
 
@@ -15,11 +11,9 @@
 	});
 </script>
 
-{#if mounted}
-	<div class="overlay" transition:fade|global={{ duration: 200 }}>
-		<slot />
-	</div>
-{/if}
+<div class="overlay">
+	<slot />
+</div>
 
 <style>
 	:global(body.noscroll) {
@@ -33,5 +27,7 @@
 		top: 0;
 		background-color: var(--cp-mantle);
 		z-index: 10;
+
+		transition: background-color 1s ease;
 	}
 </style>

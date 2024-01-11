@@ -1,14 +1,10 @@
-* {
-	transition:
-		background-color 1s ease,
-		color 1s ease;
-}
-
 body {
 	background-color: var(--cp-base);
 	color: var(--cp-text);
 	font-family: 'Chakra Petch', sans-serif;
 	line-height: 1.4;
+
+	transition: background-color 1s ease;
 }
 
 a {
@@ -19,6 +15,8 @@ a {
 ::-moz-selection,
 ::selection {
 	background-color: color-mix(in srgb, var(--cp-surface2) 50%, transparent);
+
+	transition: background-color 1s ease;
 }
 
 b {

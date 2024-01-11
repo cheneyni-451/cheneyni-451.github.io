@@ -172,6 +172,8 @@
 		backdrop-filter: blur(0.3em);
 		-webkit-backdrop-filter: blur(0.3em);
 
+		transition: background-color 1s ease;
+
 		z-index: 1000;
 	}
 
@@ -199,7 +201,8 @@
 	.name {
 		font-size: 1.5em;
 		font-weight: bold;
-		transition-timing-function: cubic-bezier();
+
+		transition: color 1s ease;
 	}
 
 	.page-link-wrapper {
@@ -212,6 +215,8 @@
 
 		font-size: 1.1em;
 		font-weight: bold;
+
+		transition: color 1s ease;
 	}
 
 	.page-link::before,
@@ -302,6 +307,8 @@
 
 	.overlay-name {
 		font-size: 2em;
+
+		transition: color 1s ease;
 	}
 
 	.controls-wrapper {
@@ -315,6 +322,8 @@
 		fill: var(--cp-text);
 
 		cursor: pointer;
+
+		transition: fill 1s ease;
 	}
 
 	.overlay-links-wrapper {
@@ -338,6 +347,8 @@
 
 		font-size: 1.75em;
 		font-weight: bold;
+
+		transition: color 1s ease;
 	}
 
 	.overlay-social-links-wrapper {
@@ -349,5 +360,7 @@
 
 	.overlay-social-link {
 		fill: var(--cp-text);
+
+		transition: fill 1s ease;
 	}
 </style>
