@@ -1,4 +1,7 @@
 <script>
+	import { text } from '@sveltejs/kit';
+	import Chip from './Chip.svelte';
+
 	export let resumeItem;
 	$: ({ date, title, description, tags } = resumeItem);
 </script>
@@ -7,11 +10,11 @@
 	<p class="item-date">{date}</p>
 	<h3 class="item-title">{title}</h3>
 	<p class="item-description">{description}</p>
-	<ul class="tags-list">
+	<div class="tags-list">
 		{#each tags as tag}
-			<li class="tag-chip">{tag}</li>
+			<Chip text={tag} />
 		{/each}
-	</ul>
+	</div>
 </div>
 
 <style>
@@ -58,20 +61,6 @@
 		flex-wrap: wrap;
 		column-gap: 0.25em;
 		row-gap: 0.25em;
-	}
-
-	.tag-chip {
-		font-size: 0.9em;
-		font-weight: 600;
-		padding: 0.4em 0.6em;
-		border: 1px solid transparent;
-		border-radius: 3em;
-		background-color: var(--cp-mauve);
-		color: var(--cp-base);
-
-		transition:
-			background-color 1s ease,
-			color 1s ease;
 	}
 
 	@media (max-width: 600px) {

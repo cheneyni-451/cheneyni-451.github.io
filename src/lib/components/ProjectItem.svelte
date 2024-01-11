@@ -1,4 +1,6 @@
 <script>
+	import Chip from './Chip.svelte';
+
 	export let projectItem;
 	$: ({ title, description, tags } = projectItem);
 </script>
@@ -6,11 +8,11 @@
 <div class="project-wrapper">
 	<h1 class="title">{title}</h1>
 	<p class="description">{description}</p>
-	<ul class="tags-list">
+	<div class="tags-list">
 		{#each tags as tag}
-			<li class="tag-chip">{tag}</li>
+			<Chip text={tag} />
 		{/each}
-	</ul>
+	</div>
 </div>
 
 <style>
@@ -44,22 +46,6 @@
 		flex-wrap: wrap;
 		column-gap: 0.25em;
 		row-gap: 0.25em;
-	}
-
-	.tag-chip {
-		padding: 0.4em 0.6em;
-		border: 1px solid transparent;
-		border-radius: 3em;
-
-		font-size: 0.9em;
-		font-weight: 900;
-
-		background-color: var(--cp-mauve);
-		color: var(--cp-base);
-
-		transition:
-			background-color 1s ease,
-			color 1s ease;
 	}
 
 	@media (max-width: 1200px) {
