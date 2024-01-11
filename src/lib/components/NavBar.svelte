@@ -262,7 +262,7 @@
 		column-gap: 1em;
 
 		position: fixed;
-		top: 1em;
+		top: 1.25em;
 		right: 1em;
 
 		z-index: 1000;
