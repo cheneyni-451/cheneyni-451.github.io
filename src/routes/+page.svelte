@@ -46,8 +46,8 @@
 		<h2 class="skills-title">Technologies I've worked with</h2>
 		<div class="skills-wrapper">
 			{#each data.skills as { text, imgSrc }}
-				<div class="skill-wrapper" use:tooltip={{ content: text }}>
-					<img class="skill-img" src={imgSrc} alt={text} />
+				<div class="skill-wrapper">
+					<img class="skill-img" src={imgSrc} alt={text} use:tooltip={{ content: text }} />
 				</div>
 			{/each}
 		</div>
