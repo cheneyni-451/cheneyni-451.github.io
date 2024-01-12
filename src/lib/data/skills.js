@@ -9,6 +9,7 @@ import ReactLogo from '$lib/assets/images/react.png';
 import GitLogo from '$lib/assets/images/git.png';
 import DynamoDBLogo from '$lib/assets/images/dynamodb.png';
 import MongoDBLogo from '$lib/assets/images/mongodb.png';
+import SvelteLogo from '$lib/assets/images/svelte.png';
 
 /**
  * @typedef {Object} Skill
@@ -23,6 +24,7 @@ export const skills = [
 	{ text: 'JavaScript', imgSrc: JavaScriptLogo },
 	{ text: 'TypeScript', imgSrc: TypeScriptLogo },
 	{ text: 'React', imgSrc: ReactLogo },
+	{ text: 'Svelte', imgSrc: SvelteLogo },
 	{ text: 'C++', imgSrc: CPPLogo },
 	{ text: 'Python', imgSrc: PythonLogo },
 	{ text: 'DynamoDB', imgSrc: DynamoDBLogo },
