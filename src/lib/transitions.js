@@ -33,12 +33,12 @@ export function flyblur(
 	};
 }
 
-export function typewriter(node, { delay = 0, speed = 1 }) {
+export function typewriter(node, { delay = 0, speed = 1, duration }) {
 	const text = node.textContent;
-	const duration = text.length / (speed * 0.01);
+	const calculatedDuration = duration ?? text.length / (speed * 0.01);
 
 	return {
-		duration,
+		duration: calculatedDuration,
 		delay,
 		tick: (t) => {
 			const i = Math.trunc(text.length * t);

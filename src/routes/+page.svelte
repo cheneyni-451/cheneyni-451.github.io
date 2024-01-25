@@ -37,7 +37,6 @@
 			bioSection,
 			(entries, observer) => {
 				entries.forEach((entry) => {
-					console.log(entry);
 					if (entry.isIntersecting) {
 						scrolledToBio = true;
 						observer.unobserve(bioSection);
@@ -54,7 +53,6 @@
 			skillsSection,
 			(entries, observer) => {
 				entries.forEach((entry) => {
-					console.log(entry);
 					if (entry.isIntersecting) {
 						scrolledToSkills = true;
 						observer.unobserve(skillsSection);
@@ -72,7 +70,7 @@
 				<h1 class="hello" in:typewriter={{ delay: 500, speed: 2 }}>Hello!</h1>
 				<h1 class="hello" in:typewriter={{ delay: 750, speed: 2 }}>I'm Cheney</h1>
 			</div>
-			<p class="title" in:typewriter={{ delay: 500, speed: 2 }}>Software Developer</p>
+			<p class="title" in:typewriter={{ delay: 500, duration: 750 }}>Software Developer</p>
 		</section>
 
 		<section class="bio" bind:this={bioSection}>
