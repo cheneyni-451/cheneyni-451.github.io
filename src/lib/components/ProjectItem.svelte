@@ -1,5 +1,5 @@
 <script>
-	import { fly } from 'svelte/transition';
+	import { fade } from 'svelte/transition';
 	import Chip from './Chip.svelte';
 	import { onMount } from 'svelte';
 
@@ -14,7 +14,7 @@
 </script>
 
 {#if mounted}
-	<div class="project-wrapper" in:fly={{ delay: transitionDelay, duration: transitionDuration }}>
+	<div class="project-wrapper" in:fade={{ delay: transitionDelay, duration: transitionDuration }}>
 		<h1 class="title">{title}</h1>
 		<p class="description">{description}</p>
 		<div class="tags-list">

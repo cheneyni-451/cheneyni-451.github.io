@@ -24,7 +24,7 @@
 			{#each projectItems as projectItem, i}
 				<ProjectItem
 					{projectItem}
-					transitionDelay={(i * 1000) / projectItems.length + 100}
+					transitionDelay={(i * 1000) / projectItems.length + 200}
 					transitionDuration={1000 / projectItems.length}
 				/>
 			{/each}
