@@ -3,16 +3,32 @@
 	import { onMount } from 'svelte';
 	import { projectItems } from '$lib/data/projectsData';
 	import ProjectItem from '$lib/components/ProjectItem.svelte';
+	import { typewriter } from '$lib/transitions';
 
 	onMount(() => pageLoading.set(false));
+	let titleTransitioned = false;
 </script>
 
 <article class="projects">
-	<h1 class="page-title">Projects</h1>
+	<h1
+		class="page-title"
+		on:introend={() => {
+			titleTransitioned = true;
+		}}
+		in:typewriter={{ delay: 200, speed: 1.5 }}
+	>
+		Projects
+	</h1>
 	<div class="project-list">
-		{#each projectItems as projectItem}
-			<ProjectItem {projectItem} />
-		{/each}
+		{#if titleTransitioned}
+			{#each projectItems as projectItem, i}
+				<ProjectItem
+					{projectItem}
+					transitionDelay={(i * 1000) / projectItems.length + 100}
+					transitionDuration={1000 / projectItems.length}
+				/>
+			{/each}
+		{/if}
 	</div>
 </article>
 

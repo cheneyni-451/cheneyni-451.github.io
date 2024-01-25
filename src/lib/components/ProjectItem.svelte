@@ -1,19 +1,29 @@
 <script>
+	import { fly } from 'svelte/transition';
 	import Chip from './Chip.svelte';
+	import { onMount } from 'svelte';
 
 	export let projectItem;
+	export let transitionDelay;
+	export let transitionDuration;
+
 	$: ({ title, description, tags } = projectItem);
+
+	let mounted = false;
+	onMount(() => (mounted = true));
 </script>
 
-<div class="project-wrapper">
-	<h1 class="title">{title}</h1>
-	<p class="description">{description}</p>
-	<div class="tags-list">
-		{#each tags as tag}
-			<Chip text={tag} />
-		{/each}
+{#if mounted}
+	<div class="project-wrapper" in:fly={{ delay: transitionDelay, duration: transitionDuration }}>
+		<h1 class="title">{title}</h1>
+		<p class="description">{description}</p>
+		<div class="tags-list">
+			{#each tags as tag}
+				<Chip text={tag} />
+			{/each}
+		</div>
 	</div>
-</div>
+{/if}
 
 <style>
 	.project-wrapper {
