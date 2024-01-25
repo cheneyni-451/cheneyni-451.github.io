@@ -1,61 +1,127 @@
 <script>
 	import { tooltip } from '$lib/actions.js';
 	import { pageLoading } from '$lib/stores.js';
+	import { typewriter } from '$lib/transitions.js';
+	import { createObserver } from '$lib/utils';
 	import { onMount } from 'svelte';
+	import { fly, fade } from 'svelte/transition';
 
 	export let data;
 
 	onMount(() => {
 		pageLoading.set(false);
 	});
+
+	let bioSection;
+	let scrolledToBio = false;
+	let bioTitleTransitioned = false;
+	const BIO_PARA_DURATION = 0.4;
+
+	const bioParagraphs = [
+		`I graduated from the
+    <a href="https://eecs.engin.umich.edu/" target="_blank">University of Michigan</a>
+		at the end of 2022 while completing two summer internships at
+		<a href="https://www.redroverk12.com/" target="_blank">Red Rover</a>
+		and <a href="https://aws.amazon.com/" target="_blank">AWS</a>.
+    After graduating, I continued working at AWS with the same team
+    for a few months before being caught in a wave of layoffs.`,
+		`I enjoy being a software engineer because of the endless amount of information to learn. I
+		enjoy working with new tools and technologies to build interesting and useful software.`,
+		`When I'm away from the keyboard, I like to bake and play video games. Recently, I've been
+		trying to master making croissants, but when I get frustrated making them, I bake some
+		lemon-flavored desserts.`
+	];
+
+	$: if (bioSection)
+		createObserver(
+			bioSection,
+			(entries, observer) => {
+				entries.forEach((entry) => {
+					console.log(entry);
+					if (entry.isIntersecting) {
+						scrolledToBio = true;
+						observer.unobserve(bioSection);
+					}
+				});
+			},
+			{ threshold: 0 }
+		);
+
+	let skillsSection;
+	let scrolledToSkills = false;
+	$: if (skillsSection)
+		createObserver(
+			skillsSection,
+			(entries, observer) => {
+				entries.forEach((entry) => {
+					console.log(entry);
+					if (entry.isIntersecting) {
+						scrolledToSkills = true;
+						observer.unobserve(skillsSection);
+					}
+				});
+			},
+			{ threshold: 0 }
+		);
 </script>
 
-<article class="section-container">
-	<section class="introduction">
-		<div class="hello-wrapper">
-			<h1 class="hello">Hello!</h1>
-			<h1 class="hello">I'm Cheney</h1>
-		</div>
-		<p class="title">Software Developer</p>
-	</section>
+{#if !$pageLoading}
+	<article class="section-container">
+		<section class="introduction">
+			<div class="hello-wrapper">
+				<h1 class="hello" in:typewriter={{ delay: 500, speed: 2 }}>Hello!</h1>
+				<h1 class="hello" in:typewriter={{ delay: 750, speed: 2 }}>I'm Cheney</h1>
+			</div>
+			<p class="title" in:typewriter={{ delay: 500, speed: 2 }}>Software Developer</p>
+		</section>
 
-	<section class="bio">
-		<h2 class="bio-title">About me</h2>
-		<p class="paragraph">
-			I graduated from the <a href="https://eecs.engin.umich.edu/" target="_blank"
-				>University of Michigan</a
-			>
-			at the end of 2022 while completing two summer internships at
-			<a href="https://www.redroverk12.com/" target="_blank">Red Rover</a>
-			and
-			<a href="https://aws.amazon.com/" target="_blank">AWS</a>. After graduating, I continued
-			working at <b>AWS</b> with the same team for a few months before being caught in a wave of layoffs.
-		</p>
-		<p class="paragraph">
-			I enjoy being a software engineer because of the endless amount of information to learn. I
-			enjoy working with new tools and technologies to build interesting and useful software.
-		</p>
-		<p class="paragraph">
-			When I'm away from the keyboard, I like to bake and play video games. Recently, I've been
-			trying to master making croissants, but when I get frustrated making them, I bake some
-			lemon-flavored desserts.
-		</p>
-	</section>
+		<section class="bio" bind:this={bioSection}>
+			{#if scrolledToBio}
+				<h2
+					class="bio-title"
+					on:introend={() => (bioTitleTransitioned = true)}
+					in:typewriter={{ speed: 1.5 }}
+				>
+					About me
+				</h2>
+				{#each bioParagraphs as paragraph, i}
+					<p
+						class="paragraph"
+						style:transition={`transform ${BIO_PARA_DURATION}s ease, opacity ${BIO_PARA_DURATION}s ease`}
+						style:transition-delay={`${i * BIO_PARA_DURATION}s`}
+						style:transform={`translateY(${bioTitleTransitioned ? '0px' : '100px'})`}
+						style:opacity={bioTitleTransitioned ? 1 : 0}
+					>
+						{@html paragraph}
+					</p>
+				{/each}
+			{/if}
+		</section>
 
-	<section class="skills">
-		<h2 class="skills-title">Technologies I've worked with</h2>
-		<div class="skills-wrapper">
-			{#each data.skills as { text, imgSrc }}
-				<div class="skill-wrapper">
-					<img class="skill-img" src={imgSrc} alt={text} use:tooltip={{ content: text }} />
+		<section class="skills" bind:this={skillsSection}>
+			{#if scrolledToSkills}
+				<h2 class="skills-title">Technologies I've worked with</h2>
+				<div class="skills-wrapper">
+					{#each data.skills as { text, imgSrc }, i}
+						<div
+							class="skill-wrapper"
+							in:fly|global={{
+								delay: (i * 1000.0) / data.skills.length,
+								duration: 1000.0 / data.skills.length,
+								x: -20
+							}}
+						>
+							<img class="skill-img" src={imgSrc} alt={text} use:tooltip={{ content: text }} />
+						</div>
+					{/each}
 				</div>
-			{/each}
-		</div>
-	</section>
-</article>
+			{/if}
+		</section>
+	</article>
+{/if}
 
 <style>
-	a {
+	p :global(a) {
 		font-weight: bold;
 	}
 
