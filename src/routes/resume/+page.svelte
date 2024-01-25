@@ -2,35 +2,54 @@
 	import ExternalLink from '$lib/assets/ExternalLink.svelte';
 	import ResumeItem from '$lib/components/ResumeItem.svelte';
 	import { pageLoading } from '$lib/stores';
+	import { typewriter } from '$lib/transitions.js';
 	import { onMount } from 'svelte';
+	import { fade } from 'svelte/transition';
 
 	export let data;
 
 	onMount(() => pageLoading.set(false));
 
 	let resumeLinkHover = false;
+	let titleTransitioned = false;
 </script>
 
 <article class="resume">
-	<h1 class="page-title">Resume</h1>
-	<div class="content">
-		<div class="resume-list">
-			{#each data.resumeItems as resumeItem}
-				<ResumeItem {resumeItem} />
-			{/each}
+	<h1
+		class="page-title"
+		on:introend={() => (titleTransitioned = true)}
+		in:typewriter={{ delay: 200, speed: 1.5 }}
+	>
+		Resume
+	</h1>
+	{#if titleTransitioned}
+		<div class="content">
+			<div class="resume-list">
+				{#each data.resumeItems as resumeItem, i}
+					<div
+						in:fade|global={{
+							delay: (i * 1000) / data.resumeItems.length + 200,
+							duration: 1000 / data.resumeItems.length
+						}}
+					>
+						<ResumeItem {resumeItem} />
+					</div>
+				{/each}
+			</div>
+			<a
+				on:mouseover={() => (resumeLinkHover = true)}
+				on:focus={() => (resumeLinkHover = true)}
+				on:mouseout={() => (resumeLinkHover = false)}
+				on:blur={() => (resumeLinkHover = false)}
+				class="resume-link"
+				href="/Ni-Cheney_Resume.pdf"
+				target="_blank"
+				in:fade={{ delay: 1200, duration: 200 }}
+				>View full resume
+				<span class="external-link-icon"><ExternalLink scale={0.7} hover={resumeLinkHover} /></span>
+			</a>
 		</div>
-		<a
-			on:mouseover={() => (resumeLinkHover = true)}
-			on:focus={() => (resumeLinkHover = true)}
-			on:mouseout={() => (resumeLinkHover = false)}
-			on:blur={() => (resumeLinkHover = false)}
-			class="resume-link"
-			href="/Ni-Cheney_Resume.pdf"
-			target="_blank"
-			>View full resume
-			<span class="external-link-icon"><ExternalLink scale={0.7} hover={resumeLinkHover} /></span>
-		</a>
-	</div>
+	{/if}
 </article>
 
 <style>
