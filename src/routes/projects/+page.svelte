@@ -15,7 +15,7 @@
 		on:introend={() => {
 			titleTransitioned = true;
 		}}
-		in:typewriter={{ delay: 200, speed: 1.5 }}
+		in:typewriter={{ delay: 500, speed: 1.5 }}
 	>
 		Projects
 	</h1>
