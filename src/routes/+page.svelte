@@ -4,7 +4,7 @@
 	import { typewriter } from '$lib/transitions.js';
 	import { createObserver } from '$lib/utils';
 	import { onMount } from 'svelte';
-	import { fly, fade } from 'svelte/transition';
+	import { fly } from 'svelte/transition';
 
 	export let data;
 
@@ -48,6 +48,7 @@
 
 	let skillsSection;
 	let scrolledToSkills = false;
+	let skillsTitleTransitioned = false;
 	$: if (skillsSection)
 		createObserver(
 			skillsSection,
@@ -98,21 +99,29 @@
 
 		<section class="skills" bind:this={skillsSection}>
 			{#if scrolledToSkills}
-				<h2 class="skills-title">Technologies I've worked with</h2>
-				<div class="skills-wrapper">
-					{#each data.skills as { text, imgSrc }, i}
-						<div
-							class="skill-wrapper"
-							in:fly|global={{
-								delay: (i * 1000.0) / data.skills.length,
-								duration: 1000.0 / data.skills.length,
-								x: -20
-							}}
-						>
-							<img class="skill-img" src={imgSrc} alt={text} use:tooltip={{ content: text }} />
-						</div>
-					{/each}
-				</div>
+				<h2
+					class="skills-title"
+					on:introend={() => (skillsTitleTransitioned = true)}
+					in:typewriter={{ speed: 5 }}
+				>
+					Technologies I've worked with
+				</h2>
+				{#if skillsTitleTransitioned}
+					<div class="skills-wrapper">
+						{#each data.skills as { text, imgSrc }, i}
+							<div
+								class="skill-wrapper"
+								in:fly|global={{
+									delay: (i * 1000.0) / data.skills.length,
+									duration: 1000.0 / data.skills.length,
+									x: -20
+								}}
+							>
+								<img class="skill-img" src={imgSrc} alt={text} use:tooltip={{ content: text }} />
+							</div>
+						{/each}
+					</div>
+				{/if}
 			{/if}
 		</section>
 	</article>

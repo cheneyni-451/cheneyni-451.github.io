@@ -1,5 +1,4 @@
 <script>
-	import { text } from '@sveltejs/kit';
 	import Chip from './Chip.svelte';
 
 	export let resumeItem;

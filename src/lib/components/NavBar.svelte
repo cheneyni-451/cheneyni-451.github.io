@@ -138,7 +138,7 @@
 								class="overlay-social-links-wrapper"
 								in:fade|global={{ delay: 400, duration: 200 }}
 							>
-								{#each linksRight as { url, iconComponent, scale }, i}
+								{#each linksRight as { url, iconComponent, scale }}
 									<a class="overlay-social-link" href={url} target="_blank"
 										><svelte:component this={iconComponent} {scale} /></a
 									>
