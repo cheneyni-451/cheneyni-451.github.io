@@ -9,28 +9,28 @@
 	let titleTransitioned = false;
 </script>
 
-<article class="projects">
-	<h1
-		class="page-title"
-		on:introend={() => {
-			titleTransitioned = true;
-		}}
-		in:typewriter={{ delay: 500, speed: 1.5 }}
-	>
-		Projects
-	</h1>
-	<div class="project-list">
-		{#if titleTransitioned}
+{#if !$pageLoading}
+	<article class="projects">
+		<h1
+			class="page-title"
+			on:introend={() => {
+				titleTransitioned = true;
+			}}
+			in:typewriter={{ delay: 200, speed: 1.5 }}
+		>
+			Projects
+		</h1>
+		<div class="project-list">
 			{#each projectItems as projectItem, i}
 				<ProjectItem
 					{projectItem}
-					transitionDelay={(i * 1000) / projectItems.length + 200}
+					transitionDelay={(i * 1000) / projectItems.length + 1000}
 					transitionDuration={1000 / projectItems.length}
 				/>
 			{/each}
-		{/if}
-	</div>
-</article>
+		</div>
+	</article>
+{/if}
 
 <style>
 	.projects {

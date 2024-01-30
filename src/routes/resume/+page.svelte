@@ -14,21 +14,21 @@
 	let titleTransitioned = false;
 </script>
 
-<article class="resume">
-	<h1
-		class="page-title"
-		on:introend={() => (titleTransitioned = true)}
-		in:typewriter={{ delay: 500, speed: 1.5 }}
-	>
-		Resume
-	</h1>
-	{#if titleTransitioned}
+{#if !$pageLoading}
+	<article class="resume">
+		<h1
+			class="page-title"
+			on:introend={() => (titleTransitioned = true)}
+			in:typewriter={{ delay: 200, speed: 1 }}
+		>
+			Resume
+		</h1>
 		<div class="content">
 			<div class="resume-list">
 				{#each data.resumeItems as resumeItem, i}
 					<div
 						in:fade|global={{
-							delay: (i * 1000) / data.resumeItems.length + 200,
+							delay: (i * 1000) / data.resumeItems.length + 1000,
 							duration: 1000 / data.resumeItems.length
 						}}
 					>
@@ -44,13 +44,13 @@
 				class="resume-link"
 				href="/Ni-Cheney_Resume.pdf"
 				target="_blank"
-				in:fade={{ delay: 1200, duration: 200 }}
+				in:fade={{ delay: 2000, duration: 200 }}
 				>View full resume
 				<span class="external-link-icon"><ExternalLink scale={0.7} hover={resumeLinkHover} /></span>
 			</a>
 		</div>
-	{/if}
-</article>
+	</article>
+{/if}
 
 <style>
 	.resume {
