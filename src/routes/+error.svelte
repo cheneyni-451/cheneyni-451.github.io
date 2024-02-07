@@ -1,5 +1,7 @@
 <script>
 	import { page } from '$app/stores';
+	import { pageLoading } from '$lib/stores';
+	import { onMount } from 'svelte';
 
 	const errorCode = $page.status;
 
@@ -9,20 +11,26 @@
 	};
 
 	const errorMessage = errorMessages[errorCode];
+
+	onMount(() => {
+		pageLoading.set(false);
+	});
 </script>
 
 <svelte:head>
 	<title>{errorCode} | {errorMessage}</title>
 </svelte:head>
 
-<h1 class="error-code">{errorCode}</h1>
-{#if errorMessage !== undefined}
-	<p class="error-message">{errorMessage}</p>
-{/if}
+{#if !$pageLoading}
+	<h1 class="error-code">{errorCode}</h1>
+	{#if errorMessage !== undefined}
+		<p class="error-message">{errorMessage}</p>
+	{/if}
 
-<div class="button-container">
-	<a class="return-link" href="/">I want to go back home</a>
-</div>
+	<div class="button-container">
+		<a class="return-link" href="/">I want to go back home</a>
+	</div>
+{/if}
 
 <style>
 	.error-code {
