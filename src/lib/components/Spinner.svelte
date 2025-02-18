@@ -1,6 +1,6 @@
 <div class="loading-wrapper">
-	<div class="ring" />
-	<div class="arc" />
+	<div class="ring"></div>
+	<div class="arc"></div>
 </div>
 
 <style>
