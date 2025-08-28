@@ -34,5 +34,11 @@ export const projectItems = [
     Designed with multithreading to allow concurrent operations from an
     arbitrary number of clients, and database consistency regardless of erratic system crashes.`,
 		tags: ['School Project', 'C++']
+	},
+	{
+		title: 'CalTracula',
+		description:
+			'Developed a calorie tracking app as team of 4 for capstone project; implemented authentication and authorization using Spring Security framework with JWT, and data querying with Elasticsearch.',
+		tags: ['Java', 'React', 'ElasticSearch', 'SpringBoot', 'MySQL']
 	}
 ];

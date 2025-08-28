@@ -12,7 +12,7 @@
  */
 export const resumeItems = [
 	{
-		date: [new Date(2023, 1), new Date(2023, 3)],
+		date: [new Date(2023, 1), new Date(2023, 6)],
 		title: 'Software Development Engineer I',
 		company: 'AWS',
 		description: `
