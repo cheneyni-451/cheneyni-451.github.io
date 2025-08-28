@@ -1,16 +1,22 @@
 <script>
 	import { tooltip } from '$lib/actions.js';
+	import CaretUp from '$lib/assets/CaretUp.svelte';
 	import { pageLoading } from '$lib/stores.js';
-	import { typewriter } from '$lib/transitions.js';
+	import { flyblur, typewriter } from '$lib/transitions.js';
 	import { createObserver } from '$lib/utils';
 	import { onMount } from 'svelte';
-	import { fly } from 'svelte/transition';
+	import { fade, fly } from 'svelte/transition';
 
 	export let data;
 
 	onMount(() => {
 		pageLoading.set(false);
 	});
+
+	/** @type {HTMLDivElement}*/
+	let scrollDown;
+	let scrollDownOpacity = 1;
+	const SCROLL_DOWN_OFFSET_THRESHOLD = 250;
 
 	let bioSection;
 	let scrolledToBio = false;
@@ -64,6 +70,18 @@
 		);
 </script>
 
+<svelte:window
+	on:scroll={() => {
+		scrollDownOpacity =
+			1 -
+			Math.min(
+				visualViewport.height - (scrollDown?.getBoundingClientRect().top + scrollDown.offsetHeight),
+				SCROLL_DOWN_OFFSET_THRESHOLD
+			) /
+				SCROLL_DOWN_OFFSET_THRESHOLD;
+	}}
+/>
+
 {#if !$pageLoading}
 	<article class="section-container">
 		<section class="introduction">
@@ -73,6 +91,9 @@
 			</div>
 			<p class="title" in:typewriter={{ delay: 500, duration: 750 }}>Software Developer</p>
 		</section>
+		<div class="scroll-for-more" bind:this={scrollDown} style:opacity={scrollDownOpacity}>
+			scroll for more
+		</div>
 
 		<section class="bio" bind:this={bioSection}>
 			{#if scrolledToBio}
@@ -135,7 +156,7 @@
 	.section-container {
 		display: flex;
 		flex-direction: column;
-		gap: 20em;
+		gap: 20rem;
 	}
 
 	section {
@@ -161,12 +182,32 @@
 	}
 
 	.hello {
-		font-size: 4em;
+		font-size: 5rem;
 	}
 
 	.title {
-		font-size: 1.1em;
+		font-size: 1.5rem;
 		color: var(--cp-subtext1);
+
+		transition: 1s ease;
+	}
+
+	.scroll-for-more {
+		position: absolute;
+		bottom: 0;
+
+		width: 100%;
+		padding: 1.5rem 0;
+
+		text-align: center;
+		font-size: 1.2rem;
+		font-style: italic;
+
+		color: var(--cp-overlay2);
+		background-color: var(--cp-mantle);
+
+		transition: color 1s ease;
+		transition: background-color 1s ease;
 	}
 
 	/** Bio **/
@@ -177,14 +218,15 @@
 	}
 
 	.bio-title {
-		font-size: 1.8em;
-		margin-bottom: 1em;
+		font-size: 3rem;
+		margin-bottom: 2rem;
 	}
 
 	.paragraph {
-		margin-bottom: 1.5em;
-		max-width: 35em;
-		line-height: 1.6;
+		font-size: 1.3rem;
+		margin-bottom: 1.5rem;
+		max-width: 35rem;
+		line-height: 1.3;
 	}
 
 	/** Skills **/
@@ -197,8 +239,8 @@
 	}
 
 	.skills-title {
-		font-size: 1.8em;
-		margin-bottom: 2em;
+		font-size: 3rem;
+		margin-bottom: 3rem;
 	}
 
 	.skills-wrapper {

@@ -4,7 +4,7 @@ body {
 	font-family: 'Chakra Petch', sans-serif;
 	line-height: 1.4;
 
-	transition: background-color 1s ease;
+	transition: 1s ease;
 }
 
 a {
@@ -16,7 +16,7 @@ a {
 ::selection {
 	background-color: color-mix(in srgb, var(--cp-surface2) 50%, transparent);
 
-	transition: background-color 1s ease;
+	transition: 1s ease;
 }
 
 b {

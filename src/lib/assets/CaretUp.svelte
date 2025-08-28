@@ -1,4 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 320 512">
+<script>
+	let { invert } = $props();
+	/** @type {SVGElement}*/
+	let icon;
+
+	$effect(() => {
+		if (invert) {
+			icon.style.transform = 'rotate(180deg)';
+		}
+	});
+</script>
+
+<svg bind:this={icon} xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 320 512">
 	<!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
 
 	<path
