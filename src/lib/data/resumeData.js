@@ -12,6 +12,15 @@
  */
 export const resumeItems = [
 	{
+		date: [new Date(2023, 8)],
+		title: 'Career Transition',
+		description: `
+		Following a company-wide restructuring, completed an intensive Java-focused full-stack training program at HTD Talent,
+		obtained AWS Certified Cloud Practitioner and Developer - Associate certifications,
+    and currently maintaining the American Chinese Pickleball Association website while developing
+    a chat app using multiple different frontends and backends to reinforce and broaden my knowledge.`
+	},
+	{
 		date: [new Date(2023, 1), new Date(2023, 6)],
 		title: 'Software Development Engineer I',
 		company: 'AWS',

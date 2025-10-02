@@ -18,7 +18,7 @@ export async function load() {
 						? `${dateTimeFormat.format(date[0])} - Present`
 						: dateTimeFormat.formatRange(date[0], date[1]);
 
-				const titleString = `${title} · ${company}`;
+				const titleString = company ? `${title} · ${company}` : title;
 
 				return { date: dateString, title: titleString, description, tags };
 			})
