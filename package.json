@@ -23,7 +23,7 @@
 		"svelte": "^5.55.8",
 		"svelte-check": "^4.1.5",
 		"typescript": "^5.8.2",
-		"vite": "^6.4.2"
+		"vite": "^8.1.2"
 	},
 	"type": "module",
 	"dependencies": {
