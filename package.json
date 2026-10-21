@@ -17,7 +17,7 @@
 		"@sveltejs/kit": "^2.70.1",
 		"eslint": "^9.23.0",
 		"eslint-config-prettier": "^10.1.1",
-		"eslint-plugin-svelte": "^2.46.1",
+		"eslint-plugin-svelte": "^3.23.1",
 		"prettier": "^3.5.3",
 		"prettier-plugin-svelte": "^3.3.3",
 		"svelte": "^5.55.8",
